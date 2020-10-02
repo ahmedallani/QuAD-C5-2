@@ -54,7 +54,9 @@ const apply = function (Ids) {
     });
   });
 };
+
 // bring applications of the user in the home section
+
 const getApps = function (userId) {
   return new Promise((resolve, reject) => {
     console.log(userId);
@@ -69,6 +71,7 @@ const getApps = function (userId) {
     );
   });
 };
+
 let query = (str) => {
   return new Promise((resolve, reject) => {
     connection.query(str, (err, data) => {
@@ -106,20 +109,50 @@ const delApp = async (data) => {
 };
 // console.log(delApp({ userId: 3, jobOfferId: 1 }), "delApp");
 
+// get userIfos if the userId equal to userInfoId
+
+const getUsersWhoApplied = function () {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      `SELECT * FROM users INNER JOIN applications ON users.id = applications.userId`,
+      (err, data) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(data);
+      }
+    );
+  });
+};
+const getAppliedJobsByusers = function () {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      `SELECT * FROM users INNER JOIN applications ON users.id = applications.userId`,
+      (err, data) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(data);
+      }
+    );
+  });
+};
+
+
 // ==========================================================================
 //===========JOB OFFERS ============
 // bringing job offers AHMED
 
-// const GetjobOffers = function () {
-//   return new Promise((resolve, reject) => {
-//     connection.query("SELECT * FROM joboffers", (err, data) => {
-//       if (err) {
-//         reject(err);
-//       }
-//       resolve(data);
-//     });
-//   });
-// };
+const GetjobOffers = function () {
+  return new Promise((resolve, reject) => {
+    connection.query("SELECT * FROM joboffers", (err, data) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
+    });
+  });
+};
 
 // inserting job offers AHMED
 
@@ -127,7 +160,10 @@ const AddJobOffers = function (job) {
   console.log("jobs =======>", job);
   return new Promise((resolve, reject) => {
     connection.query(
-      `INSERT INTO joboffers (companyId ,JobTitle ,Description) VALUES ('${job.companyId}','${job.JobTitle}','${job.Description}')`,
+//       `INSERT INTO joboffers (companyId ,JobTitle ,Description) VALUES ('${job.companyId}','${job.JobTitle}','${job.Description}')`,
+
+      `INSERT INTO joboffers SET ?`, job,
+
       (err, jobData) => {
         if (err) {
           reject(err);
@@ -137,6 +173,7 @@ const AddJobOffers = function (job) {
     );
   });
 };
+
 //=================Company=====================
 // AHMED
 // const addCompanySignUpData = function (company) {
@@ -164,6 +201,17 @@ const AddJobOffers = function (job) {
 //     });
 //   });
 // };
+const GetCompanySignUpData = function (company) {
+  console.log("companys GET =======>", company);
+  return new Promise((resolve, reject) => {
+    connection.query(`SELECT * FROM company`, (err, CompanyData) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(CompanyData);
+    });
+  });
+};
 
 // module.exports = {
 
@@ -200,19 +248,23 @@ const addUser = function (user) {
     });
   });
 };
-// ==========================================================================
-// Setting up profiles
 
 const editUser = function (user) {
+  console.log(`=======<huih"`);
   return new Promise((resolve, reject) => {
-    connection.query("INSERT INTO users SET ?", user, (err, data) => {
-      if (err) {
-        reject(err);
-      }
-      resolve(data);
+
+
+    const {user:use,id} = user
+    // console.log(`UPDATE  users SET ${Object.entries(use).filter(pair =>!!pair[1]).map(pair =>[pair[0],`"${pair[1]}"`].join("=") ).join(", ")} WHERE id = '${id}'`);
+    
+    connection.query(`UPDATE  users SET ${Object.entries(use).filter(pair =>!!pair[1]).map(pair =>[pair[0],`"${pair[1]}"`].join("=") ).join(", ")} WHERE id = '${id}'`, (err, data) => {
+      if (err) { reject(err) }
+      resolve(data)
+
     });
   });
 };
+
 
 // get the signed in freelancer
 // up there
@@ -266,9 +318,17 @@ module.exports = {
   apply,
   getApps,
   delApp,
+
   ////// Company side
+    GetjobOffers,
+  GetCompanySignUpData,
   AddJobOffers,
   addCompanySignUpData,
   companyInfo,
+
+
+  getUsersWhoApplied,
+  getAppliedJobsByusers
+
 };
 /////////////////////////////////////

@@ -19,7 +19,7 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
+  ModalFooter
 } from "reactstrap";
 
 export default class Aplications extends React.Component {

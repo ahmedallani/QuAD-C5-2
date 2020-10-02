@@ -31,6 +31,7 @@ export class Navbar extends React.Component {
       email: this.state.email,
       password: this.state.password
     };
+    console.log('jopk',this.props.loginOut)
     
     axios.post("http://127.0.0.1:3008/login", user)
       .then(response => this.props.homeFreelancer(response.data))

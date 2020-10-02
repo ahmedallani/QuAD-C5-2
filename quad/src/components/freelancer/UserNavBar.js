@@ -10,6 +10,16 @@ import "bootstrap/dist/css/bootstrap.css";
 
 
 export default class UserNavBar extends Component {
+constructor(props) {
+  super(props);
+
+  this.logoutFunc= this.logoutFunc.bind(this);
+}
+
+  logoutFunc = () => {
+    console.log('kgpkrp',this.props.logoutFunc)
+    this.props.logoutFunc()
+}
 
   render(props) {
     return (
@@ -37,7 +47,7 @@ export default class UserNavBar extends Component {
                       </Link>
             </li>
             <li className="Ubtn">
-              <Link to="/logout" className="Ulink" >
+              <Link to="/logout" className="Ulink" onClick={this.logoutFunc} >
                 Log out
                       </Link>
             </li>
