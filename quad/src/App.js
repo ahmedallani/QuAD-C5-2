@@ -63,12 +63,10 @@ constructor (props){
      compo = <FreelancerSection freelancer={this.state.user}  />
    }
 
-  return (
-    <div>
-  {compo}
-   </div>
 
-  );
+  return <div>{compo}</div>;
+
+
 };}
 
 export default App;

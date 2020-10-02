@@ -1,7 +1,7 @@
 
 import React, { Component } from "react";
 import { Card, Button, CardTitle, CardImg, Row, Col } from "reactstrap";
-import { ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+// import { ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import './post.css'
 import axios from "axios";
 
@@ -14,13 +14,11 @@ class Post extends Component {
     };
   }
   componentDidMount() {
-    axios
-      .get("http://127.0.0.1:3008/jobs")
+    axios.get("http://127.0.0.1:3008/jobs")
       .then((res) => this.setState({ JobOffersContainer: res.data }))
       .catch((err) => console.log("[client side err]", err));
 
-    axios
-      .get("http://127.0.0.1:3008/signup/company")
+    axios.get("http://127.0.0.1:3008/signup/company")
       .then((res) => this.setState({ CompanyDataContainer: res.data }))
       .catch((err) => console.log("[client side err]", err));
   }

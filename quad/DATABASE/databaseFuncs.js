@@ -28,37 +28,77 @@ const connection = mysql.createConnection(mysqlConfig);
 //   })
 // }
 
-
 // get the signed in freelancer
 const getUser = function (email) {
   return new Promise((resolve, reject) => {
-    connection.query(`SELECT * FROM users where Email = '${email}' `, (err, data) => {
-      if (err) { reject(err) }
-      resolve(data)
-    });
+    connection.query(
+      `SELECT * FROM users where Email = '${email}' `,
+      (err, data) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(data);
+      }
+    );
   });
 };
 // add application
 const apply = function (Ids) {
-  console.log('Ids =======>', Ids)
+  console.log("Ids =======>", Ids);
   return new Promise((resolve, reject) => {
     connection.query(`INSERT INTO applications SET ?`, Ids, (err, data) => {
-      if (err) { reject(err) }
-      resolve(data)
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
     });
   });
 };
+
 // bring applications of the user in the home section
+
 const getApps = function (userId) {
   return new Promise((resolve, reject) => {
-    console.log(userId)
-    connection.query(`SELECT jobOfferId FROM applications WHERE userId = ${userId}`, (err, data) => {
-      if (err) { reject(err) }
-      resolve(data)
-    })
-  })
-}
+    console.log(userId);
+    connection.query(
+      `SELECT jobOfferId FROM applications WHERE userId = ${userId}`,
+      (err, data) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(data);
+      }
+    );
+  });
+};
+// get userIfos if the userId equal to userInfoId
 
+const getUsersWhoApplied = function () {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      `SELECT * FROM users INNER JOIN applications ON users.id = applications.userId`,
+      (err, data) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(data);
+      }
+    );
+  });
+};
+const getAppliedJobsByusers = function () {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      `SELECT * FROM users INNER JOIN applications ON users.id = applications.userId`,
+      (err, data) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(data);
+      }
+    );
+  });
+};
 
 // ==========================================================================
 //===========JOB OFFERS ============
@@ -80,15 +120,18 @@ const getApps = function (userId) {
 const AddJobOffers = function (job) {
   console.log("jobs =======>", job);
   return new Promise((resolve, reject) => {
-    connection.query(`INSERT INTO joboffers (companyId ,JobTitle ,Description) VALUES ('${job.companyId}','${job.JobTitle}','${job.Description}')`, (err, jobData) => {
-      if (err) {
-        reject(err);
+    connection.query(
+      `INSERT INTO joboffers SET ?`, job,
+      (err, jobData) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(jobData);
       }
-      resolve(jobData);
-    });
-
+    );
   });
 };
+
 //=================Company=====================
 // AHMED
 // const addCompanySignUpData = function (company) {
@@ -117,7 +160,6 @@ const AddJobOffers = function (job) {
 //   });
 // };
 
-
 // module.exports = {
 
 //   getUser,
@@ -143,31 +185,31 @@ const AddJobOffers = function (job) {
 // Sign Up
 // ==========================================================================
 const addUser = function (user) {
-
-  console.log('users =======>', user)
+  console.log("users =======>", user);
   return new Promise((resolve, reject) => {
     connection.query(`INSERT INTO users SET ?`, user, (err, data) => {
-      if (err) { reject(err) }
-      resolve(data)
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
     });
   });
 };
-// ==========================================================================
-// Setting up profiles
 
 const editUser = function (user) {
   console.log(`=======<huih"`);
   return new Promise((resolve, reject) => {
+
     const {user:use,id} = user
     console.log(`UPDATE  users SET ${Object.entries(use).filter(pair =>!!pair[1]).map(pair =>[pair[0],`"${pair[1]}"`].join("=") ).join(", ")} WHERE id = '${id}'`);
     
     connection.query(`UPDATE  users SET ${Object.entries(use).filter(pair =>!!pair[1]).map(pair =>[pair[0],`"${pair[1]}"`].join("=") ).join(", ")} WHERE id = '${id}'`, (err, data) => {
       if (err) { reject(err) }
       resolve(data)
-    });
 
+    });
   });
-}
+};
 
 // get the signed in freelancer
 // up there
@@ -181,20 +223,23 @@ const editUser = function (user) {
 
 const jobOffers = function () {
   return new Promise((resolve, reject) => {
-    connection.query('SELECT * FROM joboffers', (err, data) => {
-      if (err) { reject(err) }
-      resolve(data)
+    connection.query("SELECT * FROM joboffers", (err, data) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
     });
   });
-
 };
 
 const addCompanySignUpData = function (user) {
-  console.log('users =======>', user)
+  console.log("users =======>", user);
   return new Promise((resolve, reject) => {
     connection.query(`INSERT INTO company SET ?`, user, (err, data) => {
-      if (err) { reject(err) }
-      resolve(data)
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
     });
   });
 };
@@ -220,6 +265,8 @@ module.exports = {
   ////// Company side
   AddJobOffers,
   addCompanySignUpData,
-  companyInfo
+  companyInfo,
+  getUsersWhoApplied,
+  getAppliedJobsByusers,
 };
 /////////////////////////////////////

@@ -5,7 +5,7 @@ import CompanyNavbar from "./CompanyNavbar";
 import Home from './Home/Home'
 import Profile from "./Profile";
 import Posts from "./Home/Posts/Posts";
-// import Home from "./Home/Home"
+import Home from "./Home/Home"
 export default class CompanySection extends Component {
 
     render() {
