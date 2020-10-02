@@ -1,30 +1,38 @@
 import React, { Component } from "react";
-import {
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-} from "reactstrap";
+import { CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 import { Card, CardHeader, CardFooter } from "reactstrap";
-import { Media } from "reactstrap";
 import Image from "react-bootstrap/Image";
 import { Col } from "react-bootstrap";
-// import Rater from "react-rater";
-
+import axios from "axios";
 import "react-rater/lib/react-rater.css";
 
 export default class Profile extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          comapnyName: "",
-          comapnyDescrepsion: "",
-          rating: {},
-        };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      comapnyinfo: [],
+    };
+  }
+
+  // -*- bringing data from company tabel to the profile -*- \\
+  componentDidMount() {
+    axios
+      .get("http://127.0.0.1:3008/profile")
+      .then((res) => {
+        console.log("company info are here", res.data);
+        this.setState({ comapnyinfo: res.data[0] });
+      })
+      .catch((err) => console.log(" we can't resolve company data ", err));
+  }
+
   render() {
+    console.log(this.state.comapnyinfo);
+    const data = this.state.comapnyinfo;
+
+    // const comapnyDec = data.map((company) => {
+
+    // });
+
     return (
       <div>
         <Card className="company-profile">
@@ -36,12 +44,9 @@ export default class Profile extends Component {
           </Col>
           <br />
           <CardBody>
-            <CardTitle>comapny name</CardTitle>
-            <CardSubtitle>company descriptions</CardSubtitle>
-            <CardText>
-              company descriptions // == Some quick example text to build on the
-              card title and make up the bulk of the card's content.
-            </CardText>
+            <CardTitle>{this.state.comapnyinfo.Name}</CardTitle>
+            <CardSubtitle>{this.state.comapnyinfo.Email}</CardSubtitle>
+            <CardText>{this.state.comapnyinfo.JobOffers}</CardText>
           </CardBody>
         </Card>
         <Card className="company-profile">

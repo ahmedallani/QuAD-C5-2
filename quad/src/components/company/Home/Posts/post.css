@@ -2,15 +2,13 @@
     margin: 0;
 }
 .container {
-
-    height: 20px;
+    /* height: 20px; */
     margin: auto;
     padding: 4%;
-    /* background-color: gray; */
+    background-color: gray;
     width: 50%;
 }
-.addPost {
-}
+
 .CompanyCards {
     height: 198px;
     margin: 10px;

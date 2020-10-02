@@ -22,7 +22,7 @@ CREATE TABLE users (
 CREATE TABLE jobOffers (
     ID int NOT NULL AUTO_INCREMENT,
     companyId varchar(25),
-    JobTitle varchar(25),
+    jobTitle varchar(25),
     Description varchar(50),
     PRIMARY KEY (ID)
 );
@@ -32,9 +32,15 @@ CREATE TABLE company (
     Name varchar(25),
     Email varchar(25),
     Password varchar(25),
-    JobOffers varchar(25),
     Location varchar(25),
     PhoneNumber varchar(25),
+    primary key (ID)
+);
+
+CREATE TABLE applications (
+    id int NOT NULL AUTO_INCREMENT,
+    userId int NOT NULL,
+    jobOfferId int NOT NULL,
     primary key (ID)
 );
 
@@ -49,12 +55,15 @@ INSERT INTO jobOffers (id ,companyId,JobTitle,Description) VALUES (1,"companyNam
 INSERT INTO jobOffers (id ,companyId,JobTitle,Description) VALUES (2,"Ezzines company","test","freeelance");
 INSERT INTO jobOffers (id ,companyId,JobTitle,Description) VALUES (3,"7851","CompanyTitle","123");
 -- 
-INSERT INTO company (id, Name, Email, Password, JobOffers, Location,PhoneNumber) VALUES (1, 'TEST', 'TEST@GMAIL.COM', 'PWDTEST123', 'NOTHING', 'TUNISIA',785452);
-INSERT INTO company (id, Name, Email, Password, JobOffers, Location,PhoneNumber) VALUES (2, '2TEST', '2TEST@GMAIL.COM', '2PWDTEST123', '2NOTHING', '2TUNISIA',412287451);
-INSERT INTO company (id, Name, Email, Password, JobOffers, Location,PhoneNumber) VALUES (3, '3TT', '3-TEST@GMAIL.COM', '3-PWDTEST123', '3-NOTHING', '3-TUNISIA',552858);
+
+INSERT INTO company (id, Name, Email, Password,Location,PhoneNumber) VALUES (1, 'TEST', 'TEST@GMAIL.COM', 'PWDTEST123', 'TUNISIA',785452);
+INSERT INTO company (id, Name, Email, Password,Location,PhoneNumber) VALUES (2, '2TEST', '2TEST@GMAIL.COM', '2PWDTEST123', '2TUNISIA',412287451);
+INSERT INTO company (id, Name, Email, Password,Location,PhoneNumber) VALUES (3, '3TT', '3-TEST@GMAIL.COM', '3-PWDTEST123', '3-TUNISIA',552858);
+
 
 
 -- to create the this DATABASE IN YOUR MYSQL DATABASE GUYSINSERT INTO signup (id, FirstName ,LastName, Email, Password) VALUES (1,"Ahmed","Ezzine","QuiteB@Deadly.com","test");
 -- to create the this DATABASE IN YOUR MYSQL DATABASE GUYSINSERT INTO signup (id, FirstName ,LastName, Email, Password) VALUES (1,"Ahmed","Ezzine","QuiteB@Deadly.com","test");
+
 -- INSERT INTO describe (id, Age ,Avatar, Description,PhoneNumber, Skills) VALUES (2,17,"srcImageLink","QuiteBDeadly",2525753,"Skills");
 -- INSERT INTO describe (id, Age ,Avatar, Description,PhoneNumber, Skills) VALUES (3,19,"srcImageLink","QuiteBDeadly",000666,"Skills");

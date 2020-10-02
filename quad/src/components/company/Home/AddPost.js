@@ -4,7 +4,7 @@ import axios from "axios";
 // import { FormGroup, Input,Form } from "reactstrap";
 import { Card, Button, CardTitle, Label, Input, Row, Col,FormGroup } from "reactstrap";
 // import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import './post.css';
+// import './post.css';
 class AddPost extends Component {
   constructor(props) {
     super(props);
@@ -17,11 +17,10 @@ class AddPost extends Component {
   }
 
   PostAnOfferJob() {
-      console.log('PostAnOfferJob')
-    axios
-      .post("/jobs", this.state)
-      .then((res) => res)
-      .catch((err) => console.error("[client  side error]", err));
+      console.log('PostAnOfferJob');
+      axios.post('http://127.0.0.1:3008/jobs', this.state.jobTitle)
+      .then(res => console.log(res,'RES'))
+      .catch(err => console.error("[client  side error]", err));
   }
 
   getInputVal(event, text) {
@@ -47,7 +46,6 @@ class AddPost extends Component {
               <Label for="exampleEmail">Email</Label>
                 <Input type="email" onChange={(event) => this.getInputVal(event,'jobTitle')} id="exampleEmail" placeholder="with a placeholder" />
               </FormGroup>
-    
               <br />
               <br />
               <Button color="success" onClick={this.PostAnOfferJob}>
