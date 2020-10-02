@@ -6,6 +6,7 @@ class EditProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: this.props.freelance.id,
       file: null,
       FirstName: this.props.freelance.FirstName || '',
       LastName : this.props.freelance.LastName || '',
@@ -20,12 +21,13 @@ class EditProfile extends React.Component {
     this.handleChangeAvatar = this.handleChangeAvatar.bind(this)
     this.handleChangeAge = this.handleChangeAge.bind(this);
   }
- 
-   shouldComponentUpdate(){
-     console.log('====================================');
-     console.log('should component update');
-     console.log('====================================');
-     return true
+  componentDidMount(){
+
+
+  }
+   
+   componentDidUpdate(){
+     console.log('update')
    }
   handleChange(event) {
     if(event.target.value){
@@ -45,30 +47,36 @@ class EditProfile extends React.Component {
     })
     console.log("=====>",event.target.files[0])
   }
-  componentDidMount(){
-   
+  componentDidMount(event){
+
     this.setState(state => {
       state = this.props.freelance
 
     })
-    console.log("=====>",this.state)
+    console.log("<=====>",this.state)
+  }
+  handelProfile = () => {
+    this.props.handelPublic()
   }
   save() {
     let body = {
-      Avatar: this.state.file,
+      user:
+      {Avatar: this.state.file,
       FirstName: this.state.FirstName,
       LastName: this.state.LastName,
       Email: this.state.Email,
       Age : this.state.Age, 
       PhoneNumber : this.state.PhoneNumber,
       Descreption : this.state.Descreption,
-      Skills : this.state.Skills
+      Skills : this.state.Skills},
+      id: this.state.id
     };
     axios
-    .post('http://127.0.0.1:3008/edit',body)
+    .post('http://127.0.0.1:3008/edit',body,)
     .then(res => {
       this.setState(res.data)
     } )
+    .then(this.handelProfile())
     .catch(err => console.log(err))
 
     // this.setState({this.props.})
@@ -99,7 +107,7 @@ class EditProfile extends React.Component {
         <Input type="text" name="Descreption" placeholder="Describe yourself.." onChange={this.handleChange}/><br/>
         <Label for="Skills">Skills:</Label><br/>
         <Input type="text" name="Skills" placeholder="Describe your skills.." onChange={this.handleChange}/><br/>
-        <Button >Cancel</Button>
+        <Button onClick={this.handelProfile}>Cancel</Button>
         <Button onClick={this.save} >Save</Button>
     </div>
     </Form>

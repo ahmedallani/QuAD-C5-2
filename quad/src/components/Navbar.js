@@ -32,6 +32,7 @@ export class Navbar extends React.Component {
       password: this.state.password
     };
     
+    
     axios.post("http://127.0.0.1:3008/login", user)
       .then(response => this.props.homeFreelancer(response.data))
       .catch(err =>  console.log('[client side login error]',err) );

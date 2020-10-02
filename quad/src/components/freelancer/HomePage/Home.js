@@ -17,6 +17,7 @@ export default class Home extends Component {
     }
 
     componentDidMount(){
+
         console.log('Home mounted')
         axios.get('http://127.0.0.1:3008/home')
         .then(res => {
