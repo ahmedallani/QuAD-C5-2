@@ -10,7 +10,7 @@ class Post extends Component {
     super(props);
     this.state = {
       JobOffersContainer: [],
-      CompanyDataContainer: [],
+      CompanyDataContainer: []
     };
   }
   componentDidMount() {
