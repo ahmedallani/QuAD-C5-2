@@ -48,6 +48,9 @@ class EditProfile extends React.Component {
     })
     console.log("<=====>",this.state)
   }
+  handelProfile = () => {
+    this.props.handelPublic()
+  }
   save() {
     let body = {
       user:
@@ -66,6 +69,7 @@ class EditProfile extends React.Component {
     .then(res => {
       this.setState(res.data)
     } )
+    .then(this.handelProfile())
     .catch(err => console.log(err))
 
     // this.setState({this.props.})
@@ -96,7 +100,7 @@ class EditProfile extends React.Component {
         <Input type="text" name="Descreption" placeholder="Describe yourself.." onChange={this.handleChange}/><br/>
         <Label for="Skills">Skills:</Label><br/>
         <Input type="text" name="Skills" placeholder="Describe your skills.." onChange={this.handleChange}/><br/>
-        <Button >Cancel</Button>
+        <Button onClick={this.handelProfile}>Cancel</Button>
         <Button onClick={this.save} >Save</Button>
     </div>
     </Form>
