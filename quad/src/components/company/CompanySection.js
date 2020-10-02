@@ -12,8 +12,7 @@ export default class CompanySection extends Component {
         return (
           <Router>
             <CompanyNavbar />
-            <Route path="/" component={Home}/>
-            <Route path="/Posts" component={Posts} />
+            <Route exact path="/" component={Home}/>
             <Route path="/Profile" component={Profile} />
             <Route path="/logout" component={Profile} />
           </Router>

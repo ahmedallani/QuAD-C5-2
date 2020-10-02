@@ -3,6 +3,10 @@ import axios from "axios";
 // import { Card, Button, CardTitle, CardImg, Label, Col } from "reactstrap";
 // import { FormGroup, Input,Form } from "reactstrap";
 import {
+  CardText,
+  CardLink,
+  CardBody,
+  Form,
   Card,
   Button,
   CardTitle,
@@ -49,41 +53,67 @@ class AddPost extends Component {
 
   render() {
     return (
-      <div className="container">
-        <Row className="addPost">
-          <Col sm="2">
-            <Card className="CompanyCards" body>
-              {/* <div className="feedCardS"> */}
-              <CardTitle>Company name : </CardTitle>
-              <CardTitle>Job Title </CardTitle>
-              <FormGroup>
-                <Label for="exampleEmail">Email</Label>
-                <Input
-                  type="jobTitle"
-                  onChange={(event) => this.getInputVal(event, "jobTitle")}
-                  id="jobTitle"
-                  placeholder="jobTitle..."
-                />
-                <Input
-                  type="Description"
-                  onChange={(event) => this.getInputVal(event, "Description")}
-                  id="Description"
-                  placeholder="Description..."
-                />
-              </FormGroup>
-              <br />
-              <br />
-              <Button color="success" onClick={this.PostAnOfferJob}>
-                Apply
-              </Button>
-              <Button color="danger">Cancel</Button>
-              {/* </div> */}
-            </Card>
-            <br />
-            <br />
-          </Col>
-        </Row>
-      </div>
+      <Form>
+          <Row className="addPost">
+            <Col sm="6">
+              <Card className="addpostCard"body>
+                <CardBody>
+                  <CardTitle>Special Title Treatment</CardTitle>
+                  <Col sm={10}>
+                    <Input
+                      onChange={(event) => this.getInputVal(event, "jobTitle")}
+                      type="textarea"
+                      name="text"
+                      id="exampleText"
+                    />
+                  </Col>
+                  <br />
+                  <Button color="primary" onClick={this.PostAnOfferJob}>
+                    Add post
+                  </Button>
+                  {/* <Button color="danger" onClick={this.PostAnOfferJob}>
+                    cancel
+                  </Button> */}
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+      </Form>
+//       <div className="container">
+//         <Row className="addPost">
+//           <Col sm="2">
+//             <Card className="CompanyCards" body>
+//               {/* <div className="feedCardS"> */}
+//               <CardTitle>Company name : </CardTitle>
+//               <CardTitle>Job Title </CardTitle>
+//               <FormGroup>
+//                 <Label for="exampleEmail">Email</Label>
+//                 <Input
+//                   type="jobTitle"
+//                   onChange={(event) => this.getInputVal(event, "jobTitle")}
+//                   id="jobTitle"
+//                   placeholder="jobTitle..."
+//                 />
+//                 <Input
+//                   type="Description"
+//                   onChange={(event) => this.getInputVal(event, "Description")}
+//                   id="Description"
+//                   placeholder="Description..."
+//                 />
+//               </FormGroup>
+//               <br />
+//               <br />
+//               <Button color="success" onClick={this.PostAnOfferJob}>
+//                 Apply
+//               </Button>
+//               <Button color="danger">Cancel</Button>
+//               {/* </div> */}
+//             </Card>
+//             <br />
+//             <br />
+//           </Col>
+//         </Row>
+//       </div>
     );
   }
 }

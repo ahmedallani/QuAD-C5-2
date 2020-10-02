@@ -71,6 +71,44 @@ const getApps = function (userId) {
     );
   });
 };
+
+let query = (str) => {
+  return new Promise((resolve, reject) => {
+    connection.query(str, (err, data) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
+    });
+  });
+};
+// const delApp = function (data) {
+//   return new Promise((resolve, reject) => {
+//     connection.query(
+//       'DELETE FROM applications WHERE userId = 3 AND jobOfferId=3',
+//       // `DELETE FROM applications WHERE userId = ${data.userId} AND jobOfferId= ${data.jobOfferId}`,
+//       (err, data) => {
+//         if (err) {
+//           reject(err);
+//         }
+//         resolve(data);
+//       }
+//     );
+//   });
+// };
+const delApp = async (data) => {
+  try {
+    let result = await query(
+      `DELETE FROM applications WHERE userId = ${data.userId} AND jobOfferId=${data.jobOfferId}`
+    );
+    console.log({result});
+    return result;
+  } catch (err) {
+    console.log(err);
+  }
+};
+// console.log(delApp({ userId: 3, jobOfferId: 1 }), "delApp");
+
 // get userIfos if the userId equal to userInfoId
 
 const getUsersWhoApplied = function () {
@@ -100,6 +138,7 @@ const getAppliedJobsByusers = function () {
   });
 };
 
+
 // ==========================================================================
 //===========JOB OFFERS ============
 // bringing job offers AHMED
@@ -121,7 +160,10 @@ const AddJobOffers = function (job) {
   console.log("jobs =======>", job);
   return new Promise((resolve, reject) => {
     connection.query(
+//       `INSERT INTO joboffers (companyId ,JobTitle ,Description) VALUES ('${job.companyId}','${job.JobTitle}','${job.Description}')`,
+
       `INSERT INTO joboffers SET ?`, job,
+
       (err, jobData) => {
         if (err) {
           reject(err);
@@ -143,6 +185,19 @@ const AddJobOffers = function (job) {
 //         reject(err);
 //       }
 //       resolve(data);
+//     });
+//   });
+// };
+// const GetCompanySignUpData = function (company) {
+
+//   console.log("companys GET =======>", company);
+
+//   return new Promise((resolve, reject) => {
+//     connection.query(`SELECT * FROM company`, (err, CompanyData) => {
+//       if (err) {
+//         reject(err);
+//       }
+//       resolve(CompanyData);
 //     });
 //   });
 // };
@@ -197,6 +252,7 @@ const addUser = function (user) {
 const editUser = function (user) {
   console.log(`=======<huih"`);
   return new Promise((resolve, reject) => {
+
 
     const {user:use,id} = user
     // console.log(`UPDATE  users SET ${Object.entries(use).filter(pair =>!!pair[1]).map(pair =>[pair[0],`"${pair[1]}"`].join("=") ).join(", ")} WHERE id = '${id}'`);
@@ -261,13 +317,18 @@ module.exports = {
   jobOffers,
   apply,
   getApps,
-  GetjobOffers,
+  delApp,
+
   ////// Company side
+    GetjobOffers,
   GetCompanySignUpData,
   AddJobOffers,
   addCompanySignUpData,
   companyInfo,
+
+
   getUsersWhoApplied,
   getAppliedJobsByusers
+
 };
 /////////////////////////////////////

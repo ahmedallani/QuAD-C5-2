@@ -55,6 +55,17 @@ app.get('/applications/:id', async (req, res) => {
   }
 });
 
+// delete application from database.
+app.post("/Applications/deleteApp", async (req, res) => {
+  console.log(req.body);
+  try {
+    const application = await db.delApp(req.body);
+    res.send(application);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
 // Getting All the Signed In Users // AHMED
 app.get('/signup', async (req, res) => {
     try{
@@ -64,7 +75,7 @@ app.get('/signup', async (req, res) => {
     catch (err) {
         console.error(err);
     }
-});
+}); 
 // checking if login data is valid // AHMED
 // app.post('/login', async (req, res) => {
 //     try {

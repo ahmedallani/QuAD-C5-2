@@ -22,7 +22,7 @@ class Post extends Component {
       .then((res) => this.setState({ CompanyDataContainer: res.data }))
       .catch((err) => console.log("[client side err]", err));
   }
-  render() {
+  render(props) {
     
     console.log("this JobOffersContainer ===>", this.state.JobOffersContainer);
     console.log("this company ", this.state.CompanyDataContainer);
