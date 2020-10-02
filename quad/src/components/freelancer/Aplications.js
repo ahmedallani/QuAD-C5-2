@@ -62,16 +62,24 @@ export default class Aplications extends React.Component {
   }
 
   render() {
-    const applications = this.state.applications;
-    const listAppli = applications.map((appli, i) => 
+    const applications = [];
+    for (let i = 0; i < this.state.applications.length; i++) {
+      const appId = this.state.applications[i].jobOfferId;
+      for (let j = 0; j < this.state.jobs.length; j++) {
+        const job = this.state.jobs[j];
+        if(job.ID === appId){
+          applications.push(job)
+        }
+      } 
+    }
+    const listAppli = applications.map((job, i) => 
     <div>
       <Card className="post">
           <CardBody>
             <CardTitle> @company-Username</CardTitle>
-            <CardSubtitle>Company Name</CardSubtitle>
+            <CardSubtitle>Company Name : {job.companyId}</CardSubtitle>
             <CardText>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              Job Title : {job.jobTitle}
             </CardText>
           </CardBody>
           <CardImg
@@ -95,76 +103,23 @@ export default class Aplications extends React.Component {
         {/* create modal to show more info */}
         <Modal isOpen={this.state.modalIsopen}>
           <ModalHeader toggle={this.toggleModal.bind(this)}>
-            Company post
+          {job.jobTitle}
           </ModalHeader>
           <ModalBody>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+          {job.Description}
           </ModalBody>
           <ModalFooter>
-            <Button color="primary">show original </Button>
+            <Button color="primary">Cancel Application </Button>
             <Button onClick={this.closeModal.bind(this)} color="secondary">
-              Cancel
+              Close
             </Button>
           </ModalFooter>
         </Modal>
     </div>
     )
     return (
-      <div className="posts">
-        <Card className="post">
-          <CardBody>
-            <CardTitle> @company-Username</CardTitle>
-            <CardSubtitle>Company Name</CardSubtitle>
-            <CardText>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </CardText>
-          </CardBody>
-          <CardImg
-            width="100%"
-            src="https://reactstrap.github.io/assets/318x180.svg"
-            alt="company image"
-          />
-          <CardBody>
-            <CardLink className="postButton" href="#">
-              cancel
-            </CardLink>
-            <CardLink
-              onClick={this.openModal.bind(this)}
-              className="postButton"
-              href="#"
-            >
-              View more
-            </CardLink>
-          </CardBody>
-        </Card>
-        {/* create modal to show more info */}
-        <Modal isOpen={this.state.modalIsopen}>
-          <ModalHeader toggle={this.toggleModal.bind(this)}>
-            Company post
-          </ModalHeader>
-          <ModalBody>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary">show original </Button>
-            <Button onClick={this.closeModal.bind(this)} color="secondary">
-              Cancel
-            </Button>
-          </ModalFooter>
-        </Modal>
+      <div>
+        {listAppli}
       </div>
 
       // <Form >
