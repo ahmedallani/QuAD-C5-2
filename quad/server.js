@@ -152,7 +152,8 @@ app.post('/signup/company', async (req, res) => {
 });
 
 app.get('/signup/company', async (req, res) => {
-    try {const codata = await db.GetCompanySignUpData();
+    try {
+      const codata = await db.GetCompanySignUpData();
     res.status(200).send(codata)
  }
  catch (err) {res.send(err)}

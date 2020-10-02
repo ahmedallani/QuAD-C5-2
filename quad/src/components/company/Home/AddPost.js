@@ -18,8 +18,9 @@ class AddPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      jobTitle: '',
-      Description : ''
+      jobTitle: "",
+      Description: "",
+      Companyname: [],
     };
     // this.cancel = this.cancel.bind(this);
     this.getInputVal = this.getInputVal.bind(this);
@@ -27,21 +28,24 @@ class AddPost extends Component {
   }
 
   PostAnOfferJob() {
-    console.log('yhis')
-    axios.post("http://127.0.0.1:3008/jobs", this.state)
+    console.log("yhis");
+    axios
+      .post("http://127.0.0.1:3008/jobs", this.state)
       .then((res) => console.log(res, "RES"))
       .catch((err) => console.error("[client side error]", err));
   }
 
   getInputVal(event, text) {
     this.setState({ [text]: event.target.value });
-    console.log("input ===>", text ,event.target.value);
+    console.log("input ===>", text, event.target.value);
   }
 
-  // cancel() {
-  //   console.log("canceled");
-  //   this.setState({ jobTitle: "" });
-  // }
+  componentDidMount() {
+    axios
+      .get("http://127.0.0.1:3008/signup/company")
+      .then((res) => this.setState({ Companyname: res.data }))
+      .catch((err) => console.error("[client side error]", err));
+  }
 
   render() {
     return (
@@ -50,7 +54,7 @@ class AddPost extends Component {
           <Col sm="2">
             <Card className="CompanyCards" body>
               {/* <div className="feedCardS"> */}
-              <CardTitle>Company name</CardTitle>
+              <CardTitle>Company name : </CardTitle>
               <CardTitle>Job Title </CardTitle>
               <FormGroup>
                 <Label for="exampleEmail">Email</Label>
@@ -72,9 +76,7 @@ class AddPost extends Component {
               <Button color="success" onClick={this.PostAnOfferJob}>
                 Apply
               </Button>
-              <Button color="danger" >
-                Cancel
-              </Button>
+              <Button color="danger">Cancel</Button>
               {/* </div> */}
             </Card>
             <br />
