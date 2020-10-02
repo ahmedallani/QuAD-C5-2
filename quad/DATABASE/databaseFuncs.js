@@ -197,12 +197,16 @@ const addUser = function (user) {
 };
 
 const editUser = function (user) {
+  console.log(`=======<huih"`);
   return new Promise((resolve, reject) => {
-    connection.query("INSERT INTO users SET ?", user, (err, data) => {
-      if (err) {
-        reject(err);
-      }
-      resolve(data);
+
+    const {user:use,id} = user
+    console.log(`UPDATE  users SET ${Object.entries(use).filter(pair =>!!pair[1]).map(pair =>[pair[0],`"${pair[1]}"`].join("=") ).join(", ")} WHERE id = '${id}'`);
+    
+    connection.query(`UPDATE  users SET ${Object.entries(use).filter(pair =>!!pair[1]).map(pair =>[pair[0],`"${pair[1]}"`].join("=") ).join(", ")} WHERE id = '${id}'`, (err, data) => {
+      if (err) { reject(err) }
+      resolve(data)
+
     });
   });
 };
