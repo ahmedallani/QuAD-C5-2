@@ -17,6 +17,7 @@ export default class Home extends Component {
     }
 
     componentDidMount(){
+
         console.log('Home mounted')
         axios.get('http://127.0.0.1:3008/home')
         .then(res => {
@@ -27,17 +28,17 @@ export default class Home extends Component {
     }
     
       
-    //   shouldComponentUpdate(nextProps, nextState) {
-    //     console.log('Sould Home update?')
-    //     return true;
-    //   }
+      shouldComponentUpdate(nextProps, nextState) {
+        console.log('Should Home update?')
+        return true;
+      }
       
     
       
-    //   componentDidUpdate(previousProps, previousState) {
-    //     console.log('Home did update')
+      componentDidUpdate(previousProps, previousState) {
+        console.log('Home did update')
       
-    //   }
+      }
 
     render(props) {
         return (

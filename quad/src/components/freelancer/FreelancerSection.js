@@ -36,7 +36,7 @@ export default class FreelancerSection extends Component {
                 <UserNavBar/>  
                 <Route exact path="/" render={() => <Home user={this.props.freelancer} />}/>
                 <Route path="/Profile" render={() => <FreelancerProfile freelancer={this.props.freelancer} />}/>
-                <Route path="/Aplications" component={Aplications} />
+                <Route path="/Aplications" render={() => <Aplications freelancer={this.props.freelancer.id} />} />
                 <Route path="/logout" component={Aplications} />
 
             </Router>
