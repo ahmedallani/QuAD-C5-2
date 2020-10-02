@@ -25,11 +25,6 @@ class CompanyNavbar extends Component {
                   </Link>
                 </li>
                 <li className="Ubtn">
-                  <Link to="/posts" className="Ulink">
-                    Posts
-                  </Link>
-                </li>
-                <li className="Ubtn">
                   <Link to="/logout" className="Ulink">
                     Log out
                   </Link>

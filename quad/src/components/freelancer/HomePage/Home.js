@@ -27,17 +27,17 @@ export default class Home extends Component {
     }
     
       
-    //   shouldComponentUpdate(nextProps, nextState) {
-    //     console.log('Sould Home update?')
-    //     return true;
-    //   }
+      shouldComponentUpdate(nextProps, nextState) {
+        console.log('Should Home update?')
+        return true;
+      }
       
     
       
-    //   componentDidUpdate(previousProps, previousState) {
-    //     console.log('Home did update')
+      componentDidUpdate(previousProps, previousState) {
+        console.log('Home did update')
       
-    //   }
+      }
 
     render(props) {
         return (

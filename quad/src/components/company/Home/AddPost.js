@@ -2,9 +2,22 @@ import React, { Component } from "react";
 import axios from "axios";
 // import { Card, Button, CardTitle, CardImg, Label, Col } from "reactstrap";
 // import { FormGroup, Input,Form } from "reactstrap";
-import { Card, Button, CardTitle, Label, Input, Row, Col,FormGroup } from "reactstrap";
+import {
+  CardText,
+  CardLink,
+  CardBody,
+  Form,
+  Card,
+  Button,
+  CardTitle,
+  Label,
+  Input,
+  Row,
+  Col,
+  FormGroup,
+} from "reactstrap";
 // import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import './post.css';
+// import './post.css';
 class AddPost extends Component {
   constructor(props) {
     super(props);
@@ -17,11 +30,10 @@ class AddPost extends Component {
   }
 
   PostAnOfferJob() {
-      console.log('PostAnOfferJob')
-    axios
-      .post("/jobs", this.state)
-      .then((res) => res)
-      .catch((err) => console.error("[client  side error]", err));
+      console.log('PostAnOfferJob');
+      axios.post('http://127.0.0.1:3008/jobs', this.state.jobTitle)
+      .then(res => console.log(res,'RES'))
+      .catch(err => console.error("[client  side error]", err));
   }
 
   getInputVal(event, text) {
@@ -36,34 +48,32 @@ class AddPost extends Component {
 
   render() {
     return (
-      <div className="container">
-    <Row className="addPost">
-        <Col sm="2">
-          <Card className="CompanyCards" body>
-            {/* <div className="feedCardS"> */}
-              <CardTitle>Company name</CardTitle>
-              <CardTitle>Job Title </CardTitle>
-              <FormGroup>
-              <Label for="exampleEmail">Email</Label>
-                <Input type="email" onChange={(event) => this.getInputVal(event,'jobTitle')} id="exampleEmail" placeholder="with a placeholder" />
-              </FormGroup>
-    
-              <br />
-              <br />
-              <Button color="success" onClick={this.PostAnOfferJob}>
-                Apply
-              </Button>
-              <Button color="danger" onClick={this.cancel}>
-                Cancel
-              </Button>
-            {/* </div> */}
-          </Card>
-          <br />
-          <br />
-    
-        </Col>
-      </Row>
-      </div>
+      <Form>
+          <Row className="addPost">
+            <Col sm="6">
+              <Card className="addpostCard"body>
+                <CardBody>
+                  <CardTitle>Special Title Treatment</CardTitle>
+                  <Col sm={10}>
+                    <Input
+                      onChange={(event) => this.getInputVal(event, "jobTitle")}
+                      type="textarea"
+                      name="text"
+                      id="exampleText"
+                    />
+                  </Col>
+                  <br />
+                  <Button color="primary" onClick={this.PostAnOfferJob}>
+                    Add post
+                  </Button>
+                  {/* <Button color="danger" onClick={this.PostAnOfferJob}>
+                    cancel
+                  </Button> */}
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+      </Form>
     );
   }
 }

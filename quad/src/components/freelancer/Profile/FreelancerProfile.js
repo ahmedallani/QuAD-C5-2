@@ -2,7 +2,6 @@ import React from "react";
 import PublicProfile from "./PublicProfile.js";
 import EditProfile from "./EditProfile.js";
 import Edit from "./Edit.js";
-import axios from 'axios';
 
 class FreelancerProfile extends React.Component {
   constructor(props) {
@@ -34,7 +33,7 @@ class FreelancerProfile extends React.Component {
       compo = <PublicProfile freelance={this.props.freelancer} />;
     }
     if (this.state.profileType === 2){
-      compo = <EditProfile/>;
+      compo = <EditProfile freelance={this.props.freelancer}/>;
     }
     if (this.state.profileType === 1) {
       edit = <Edit handelEdit={this.handelEditProfil} />;

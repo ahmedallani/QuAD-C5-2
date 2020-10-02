@@ -36,7 +36,7 @@ export default class Feed extends Component {
           <Card className="feedCard" body>
             <div className="feedCardS">
               <CardTitle>Company name : {this.props.feed.companyId}</CardTitle>
-              <CardTitle>Job Title : {this.props.feed.JobTitle} </CardTitle>
+              <CardTitle>Job Title : {this.props.feed.jobTitle} </CardTitle>
               <CardImg
                 width="100%"
                 src="https://reactstrap.github.io/assets/318x180.svg"
