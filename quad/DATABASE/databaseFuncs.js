@@ -104,16 +104,16 @@ const getAppliedJobsByusers = function () {
 //===========JOB OFFERS ============
 // bringing job offers AHMED
 
-// const GetjobOffers = function () {
-//   return new Promise((resolve, reject) => {
-//     connection.query("SELECT * FROM joboffers", (err, data) => {
-//       if (err) {
-//         reject(err);
-//       }
-//       resolve(data);
-//     });
-//   });
-// };
+const GetjobOffers = function () {
+  return new Promise((resolve, reject) => {
+    connection.query("SELECT * FROM joboffers", (err, data) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
+    });
+  });
+};
 
 // inserting job offers AHMED
 
@@ -146,19 +146,19 @@ const AddJobOffers = function (job) {
 //     });
 //   });
 // };
-// const GetCompanySignUpData = function (company) {
+const GetCompanySignUpData = function (company) {
 
-//   console.log("companys GET =======>", company);
+  console.log("companys GET =======>", company);
 
-//   return new Promise((resolve, reject) => {
-//     connection.query(`SELECT * FROM company`, (err, CompanyData) => {
-//       if (err) {
-//         reject(err);
-//       }
-//       resolve(CompanyData);
-//     });
-//   });
-// };
+  return new Promise((resolve, reject) => {
+    connection.query(`SELECT * FROM company`, (err, CompanyData) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(CompanyData);
+    });
+  });
+};
 
 // module.exports = {
 
@@ -262,7 +262,9 @@ module.exports = {
   jobOffers,
   apply,
   getApps,
+  GetjobOffers,
   ////// Company side
+  GetCompanySignUpData,
   AddJobOffers,
   addCompanySignUpData,
   companyInfo,

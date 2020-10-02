@@ -120,15 +120,15 @@ app.get('/signup', async (req, res) => {
 //=========JOB OFFERS=====================
   //  getting job offers // AHMED
 
-// app.get('/jobs', async (req, res) => {
-//     try{
-//         const jobsData = await db.GetjobOffers();
-//         res.status(200).send(jobsData);
-//     }
-//     catch (err) {
-//         console.error(err);
-//     }
-// });
+app.get('/jobs', async (req, res) => {
+    try{
+        const jobsData = await db.GetjobOffers();
+        res.status(200).send(jobsData);
+    }
+    catch (err) {
+        console.error(err);
+    }
+});
 
 //    inserting job offers // AHMED
 app.post('/jobs', async(req,res) => {
@@ -143,20 +143,20 @@ app.post('/jobs', async(req,res) => {
 });
 //======================================================
   // Company signUp // AHMED
-// app.post('/signup/company', async (req, res) => {
-//     try{
-//         const Cdata = await db.addCompanySignUpData(req.body);
-//         res.status(200).send(Cdata);
-//     }
-//     catch (e) {res.send(e)}
-// });
+app.post('/signup/company', async (req, res) => {
+    try{
+        const Cdata = await db.addCompanySignUpData(req.body);
+        res.status(200).send(Cdata);
+    }
+    catch (e) {res.send(e)}
+});
 
-// app.get('/signup/company', async (req, res) => {
-//     try {const codata = await db.GetCompanySignUpData();
-//     res.status(200).send(codata)
-//  }
-//  catch (err) {res.send(err)}
-// })
+app.get('/signup/company', async (req, res) => {
+    try {const codata = await db.GetCompanySignUpData();
+    res.status(200).send(codata)
+ }
+ catch (err) {res.send(err)}
+})
 
 // app.post('/login/company', async (req, res) => {
 //     try {
