@@ -1,5 +1,6 @@
 // import react.
 import React from "react";
+import axios from 'axios';
 // import browser router.
 // eslint-disable-next-line
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -22,10 +23,38 @@ import {
 } from "reactstrap";
 
 export default class Aplications extends React.Component {
-  state = {
-    visible: true,
-    modalIsopen: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      jobs: [],
+      applications: [],
+      visible: true,
+      modalIsopen: false,
+      deletePostId: 0,
+    };
+    this.cancelUserApplication = this.cancelUserApplication.bind(this);
+
+  }
+
+  componentDidMount() {
+    console.log("aplications");
+    axios
+      .get("http://127.0.0.1:3008/applications/" + this.props.freelancer)
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ applications: res.data });
+      })
+      .catch((err) => console.log(err));
+    // we have the job offers ids, now we need the actual offers
+    axios
+      .get("http://127.0.0.1:3008/home")
+      .then((res) => {
+        console.log("job offers ===>", res.data);
+
+        this.setState({ jobs: res.data });
+      })
+      .catch((err) => console.log("client side catch error ===>", err));
+  }
 
   toggleModal() {
     this.setState({ visible: this.state.visible });
@@ -39,17 +68,44 @@ export default class Aplications extends React.Component {
     this.setState({ modalIsopen: false });
   }
 
+  cancelUserApplication(jobOfferId, userId) {
+    const application = {
+      jobOfferId: jobOfferId,
+      userId: userId
+    };
+    axios
+      .post("http://127.0.0.1:3008/Applications/deleteApp", application)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+
+    console.log(jobOfferId, userId);
+  }
+
   render() {
-    return (
-      <div className="posts">
+
+    const applications = [];
+    for (let i = 0; i < this.state.applications.length; i++) {
+      const appId = this.state.applications[i].jobOfferId;
+      for (let j = 0; j < this.state.jobs.length; j++) {
+        const job = this.state.jobs[j];
+        if (job.ID === appId) {
+          applications.push(job);
+        }
+      }
+    }
+
+    const listAppli = applications.map((job, i) => (
+      <div>
         <Card className="post">
           <CardBody>
             <CardTitle> @company-Username</CardTitle>
-            <CardSubtitle>Company Name</CardSubtitle>
-            <CardText>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </CardText>
+            <CardSubtitle>Company Name : {job.companyId}</CardSubtitle>
+            <CardText>Job Title : {job.jobTitle}</CardText>
           </CardBody>
           <CardImg
             width="100%"
@@ -72,25 +128,27 @@ export default class Aplications extends React.Component {
         {/* create modal to show more info */}
         <Modal isOpen={this.state.modalIsopen}>
           <ModalHeader toggle={this.toggleModal.bind(this)}>
-            Company post
+            {job.jobTitle}
           </ModalHeader>
-          <ModalBody>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </ModalBody>
+          <ModalBody>{job.Description}</ModalBody>
           <ModalFooter>
-            <Button color="primary">show original </Button>
+            <Button
+              onClick={() =>
+                this.cancelUserApplication(job.ID, this.props.freelancer)
+              }
+              color="danger"
+            >
+              Cancel Application
+            </Button>
             <Button onClick={this.closeModal.bind(this)} color="secondary">
-              Cancel
+              Close
             </Button>
           </ModalFooter>
         </Modal>
       </div>
+    ));
+    return (
+      <div>{listAppli}</div>
 
       // <Form >
       //   <FormGroup >

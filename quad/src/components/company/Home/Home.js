@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import AddPost from './AddPost';
+import Posts from './Posts/Posts'
 
 class Home extends Component {
     render() {
         return (
             <div>
-                <h1>hey i supose to be the first page that company saw</h1>
+            <AddPost/>
+            <Posts/>
             </div>
         );
     }
