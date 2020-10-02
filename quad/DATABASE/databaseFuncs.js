@@ -199,7 +199,7 @@ const editUser = function (user) {
   return new Promise((resolve, reject) => {
 
     const {user:use,id} = user
-    console.log(`UPDATE  users SET ${Object.entries(use).filter(pair =>!!pair[1]).map(pair =>[pair[0],`"${pair[1]}"`].join("=") ).join(", ")} WHERE id = '${id}'`);
+    // console.log(`UPDATE  users SET ${Object.entries(use).filter(pair =>!!pair[1]).map(pair =>[pair[0],`"${pair[1]}"`].join("=") ).join(", ")} WHERE id = '${id}'`);
     
     connection.query(`UPDATE  users SET ${Object.entries(use).filter(pair =>!!pair[1]).map(pair =>[pair[0],`"${pair[1]}"`].join("=") ).join(", ")} WHERE id = '${id}'`, (err, data) => {
       if (err) { reject(err) }
@@ -208,6 +208,7 @@ const editUser = function (user) {
     });
   });
 };
+
 
 // get the signed in freelancer
 // up there
