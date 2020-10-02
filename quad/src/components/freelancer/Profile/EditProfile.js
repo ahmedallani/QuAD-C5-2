@@ -21,6 +21,12 @@ class EditProfile extends React.Component {
     this.handleChangeAge = this.handleChangeAge.bind(this);
   }
  
+   shouldComponentUpdate(){
+     console.log('====================================');
+     console.log('should component update');
+     console.log('====================================');
+     return true
+   }
   handleChange(event) {
     if(event.target.value){
     this.setState({ [event.target.name]: event.target.value });

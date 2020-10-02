@@ -32,8 +32,8 @@ const connection = mysql.createConnection(mysqlConfig);
 // get the signed in freelancer
 const getUser = function (email) {
   return new Promise((resolve, reject) => {
-    connection.query(`SELECT * FROM users where Email = '${email}' `, (err, data) => {
-      if (err) { reject(err) }
+    connection.query(`SELECT * FROM users where Email = '${email}'`, (err, data) => {
+      if (err) { resolve(err) }
       resolve(data)
     });
   });
