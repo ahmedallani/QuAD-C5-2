@@ -1,6 +1,16 @@
 
 import React, { Component } from "react";
-import { Card, Button, CardTitle, CardImg, Row, Col } from "reactstrap";
+import {
+  Card,
+  Button,
+  CardTitle,
+  CardImg,
+  Row,
+  Col,
+  CardBody,
+  CardText,
+
+} from "reactstrap";
 // import { ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import './post.css'
 import axios from "axios";
@@ -31,32 +41,29 @@ class Post extends Component {
     this.state.CompanyDataContainer.map((coelm, key) => {
       return (
         <Row key={key} className="container">
-            <Col sm="6">
-              <Card className="feedCard" body>
-                <div className="feedCardS">
-                  <CardTitle>Company name : {coelm.Name}</CardTitle>
-                  <CardTitle>Company job title : {elm.JobTitle}</CardTitle>
-                  <CardTitle>Job Title : {elm.Description} </CardTitle>
-                  <CardImg
-                    width="100%"
-                    src="https://reactstrap.github.io/assets/318x180.svg"
-                    alt="company image"
-                  />
-                  <br />
-                  <br />
-                  <Button color="primary" id="detailsBtn">
-                    See-Freelancers-Applies
-                  </Button>
-                </div>
-              </Card>
-              <br />
-              <br />
-            </Col>
-          </Row>
-        );
+            <Card className="feedCard" body>
+              <div className="feedCardS">
+                <Card>
+                  <CardBody>
+                    <CardTitle>{coelm.Name}</CardTitle>
+                    <CardText>{elm.JobTitle}</CardText>
+                    <CardText>
+                      <small className="text-muted">
+                        Last updated 3 mins ago
+                      </small>
+                    </CardText>
+                    <CardText>{elm.Description}.</CardText>
+                  </CardBody>
+                </Card>
+              </div>
+            </Card>
+        </Row>
+      );
       })
       );
-      return <div>{post}</div>;
+      return ( 
+      <div>{post}</div>
+      )
     }
   }
   
