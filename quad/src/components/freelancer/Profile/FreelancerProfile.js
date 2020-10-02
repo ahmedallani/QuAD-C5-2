@@ -33,7 +33,7 @@ class FreelancerProfile extends React.Component {
       compo = <PublicProfile freelance={this.props.freelancer} />;
     }
     if (this.state.profileType === 2){
-      compo = <EditProfile freelance={this.props.freelancer}/>;
+      compo = <EditProfile freelance={this.props.freelancer} handelPublic={this.handelPublicProfile}/>;
     }
     if (this.state.profileType === 1) {
       edit = <Edit handelEdit={this.handelEditProfil} />;
