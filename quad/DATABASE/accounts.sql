@@ -29,6 +29,7 @@ CREATE TABLE jobOffers (
 
 CREATE TABLE company (
     id int NOT NULL AUTO_INCREMENT,
+    ImageSrc varchar(100),
     Name varchar(25),
     Email varchar(25),
     Password varchar(25),
