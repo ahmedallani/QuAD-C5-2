@@ -24,7 +24,7 @@ class AddPost extends Component {
     this.state = {
       jobTitle: "",
       Description: "",
-      Companyname: [],
+      Companyname: "",
     };
     // this.cancel = this.cancel.bind(this);
     this.getInputVal = this.getInputVal.bind(this);

@@ -37,7 +37,7 @@ export default class Aplications extends React.Component {
   }
 
   componentDidMount() {
-    console.log("aplications");
+    console.log("applications");
     axios
       .get("http://127.0.0.1:3008/applications/" + this.props.freelancer)
       .then((res) => {

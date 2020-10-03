@@ -52,7 +52,7 @@ app.get("/home", async (req, res) => {
 });
 
 // apply for a job offer
-app.post('/apply', async (req, res)  => {
+app.post('/home/apply', async (req, res)  => {
     console.log('req.body');
     console.log('req.body ====>',req.body);
     try {
