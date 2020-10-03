@@ -65,7 +65,15 @@ class AddPost extends Component {
           <Col sm="6">
             <Card className="addpostCard" body>
               <CardBody>
-                <CardTitle>Special Title Treatment</CardTitle>
+                <CardTitle>Company name</CardTitle>
+                <CardTitle>Job title</CardTitle>
+                <Input
+                  type="text"
+                  name="jobTitel"
+                  id="add job titel"
+                  placeholder="Job titel"
+                />
+                <CardTitle>Job description</CardTitle>
                 <Col sm={10}>
                   <Input
                     onChange={(event) => this.getInputVal(event, "jobTitle")}

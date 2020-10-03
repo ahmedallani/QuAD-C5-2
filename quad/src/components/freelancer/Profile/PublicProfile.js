@@ -32,15 +32,31 @@ class PublicProfile extends React.Component {
           </Col>
           <CardBody>
             <Card className="userInfoCard">
-              <CardText id="UserFName">First name</CardText>
-              <CardText id="UserLName">Last Name</CardText>
-              <CardText id="UserAge">Age</CardText>
-              <CardText id="UserEmail">Email</CardText>
-              <CardText id="UserPhone">Phone</CardText>
-              <CardText id="UserDescription">Description</CardText>
-              <CardText id="UserSkills">Skills</CardText>
+              <CardText id="UserFName">
+                {this.props.freelance.FirstName}
+              </CardText>
+              <CardText id="UserLName">
+                {this.props.freelance.LastName}
+              </CardText>
+              <CardText id="UserAge">
+                {/* {this.props.freelance.Age} */}
+              </CardText>
+              <CardText id="UserEmail">
+                {/* {this.props.freelance.Email} */}
+              </CardText>
+              <CardText id="UserPhone">
+                {/* {this.props.freelance.PhoneNumber} */}
+              </CardText>
+              <CardText id="UserDescription">
+                {/* {this.props.freelance.Description} */}
+              </CardText>
+              <CardText id="UserSkills">
+                {/* {this.props.freelance} */}
+              </CardText>
             </Card>
-            <Label id="msgProfile"> you can edit your account information by clicking here. </Label>
+            <Label id="msgProfile">
+              you can edit your account information by clicking here.
+            </Label>
           </CardBody>
         </Card>
 
@@ -48,9 +64,9 @@ class PublicProfile extends React.Component {
        <h1>First Name: {this.props.freelance.FirstName}</h1>
        <h1>Last Name: {this.props.freelance.LastName}</h1>
        <h1>Age: {this.props.freelance.Age}</h1>
-       <h1>Email: {this.props.freelance.Email}</h1>
+       <h1>Email: </h1>
        <h1>Phone: {this.props.freelance.PhoneNumber}</h1>
-       <h1>Description: {this.props.freelance.Description}</h1>
+       <h1>Description: </h1>
        <h1>Skills: {this.props.freelance.Skills}</h1> */}
       </div>
     );

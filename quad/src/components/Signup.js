@@ -28,7 +28,7 @@ class Signup extends React.Component {
     }
     return (
       <div>
-      <div>Welcome to the sQuAD ! <br/><br/> 
+      <div id ="welcomeText">Welcome to the sQuAD ! <br/><br/> 
       Our objectiv is to connect the dots between developpers and companies striving for awesome people like YOU !<br/>
       What are you waiting for? <br/>
       Create you account right now and let the world see your amazing skills.
