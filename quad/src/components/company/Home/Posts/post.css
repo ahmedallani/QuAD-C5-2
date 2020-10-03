@@ -2,11 +2,10 @@
     margin: 0;
 }
 .container {
-    /* height: 20px; */
-    margin: auto;
+    position: relative;
+    left: 24%;
     padding: 4%;
-    background-color: gray;
-    width: 50%;
+    width: 57.5%;
 }
 
 .CompanyCards {
