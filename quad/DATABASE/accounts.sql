@@ -62,6 +62,8 @@ INSERT INTO company (id, Status, Name, Email, Password,Location,PhoneNumber) VAL
 INSERT INTO company (id, Status, Name, Email, Password,Location,PhoneNumber) VALUES (2, 'company', '2TEST', '2TEST@GMAIL.COM', '2PWDTEST123', '2TUNISIA',412287451);
 INSERT INTO company (id, Status, Name, Email, Password,Location,PhoneNumber) VALUES (3, 'company', '3TT', '3-TEST@GMAIL.COM', '3-PWDTEST123', '3-TUNISIA',552858);
 
+-- INSERT INTO applications (id, userId, jobOfferId) VALUES (1, 2, 1);
+-- INSERT INTO applications (id, userId, jobOfferId) VALUES (2, 1, 1);
 
 
 -- to create the this DATABASE IN YOUR MYSQL DATABASE GUYSINSERT INTO signup (id, FirstName ,LastName, Email, Password) VALUES (1,"Ahmed","Ezzine","QuiteB@Deadly.com","test");

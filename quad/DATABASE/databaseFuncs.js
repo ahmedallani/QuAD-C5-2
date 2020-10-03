@@ -1,25 +1,12 @@
 const mysql = require("mysql");
 const mysqlConfig = require("./config.js");
 const connection = mysql.createConnection(mysqlConfig);
-// Sign Up
-// ==========================================================================
-//Select all users // AHMED
-// const Users = function () {
-//   return new Promise((resolve, reject) => {
-//     connection.query("SELECT * FROM users", (err, data) => {
-//       if (err) {
-//         reject(err);
-//       }
-//       resolve(data);
-//     });
-//   });
-// };
 
 /////////////////////////////// FREELANCER SECTION////////////////////////////////////////////
-// Add freelance in DB
+// Add freelance in DB OK
 
 const addUser = function (user) {
-  console.log("users =======>", user);
+  // console.log("users =======>", user);
   return new Promise((resolve, reject) => {
     connection.query(`INSERT INTO users SET ?`, user, (err, data) => {
       if (err) {
@@ -29,7 +16,7 @@ const addUser = function (user) {
     });
   });
 };
-// get the signed in freelancer
+// get the signed in freelancer OK
 const getUser = function (email) {
   return new Promise((resolve, reject) => {
     connection.query(
@@ -43,7 +30,7 @@ const getUser = function (email) {
     );
   });
 };
-// edit freelancer profile
+// edit freelancer profile OK
 const editUser = function (user) {
   console.log(`=======<huih"`);
   return new Promise((resolve, reject) => {
@@ -59,6 +46,21 @@ const editUser = function (user) {
     });
   });
 };
+
+// get feeds
+// bringing job offers
+
+const jobOffers = function () {
+  return new Promise((resolve, reject) => {
+    connection.query("SELECT * FROM joboffers", (err, data) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
+    });
+  });
+};
+
 
 // add application
 const apply = function (Ids) {
@@ -156,41 +158,10 @@ const GetCompanySignUpData = function (email) {
 };
 
 
-const getUsersWhoApplied = function () {
+// -*- bringing company informations for the company profile -*-\\
+const companyInfo = () => {
   return new Promise((resolve, reject) => {
-    connection.query(
-      `SELECT * FROM users INNER JOIN applications ON users.id = applications.userId`,
-      (err, data) => {
-        if (err) {
-          reject(err);
-        }
-        resolve(data);
-      }
-    );
-  });
-};
-const getAppliedJobsByusers = function () {
-  return new Promise((resolve, reject) => {
-    connection.query(
-      `SELECT * FROM users INNER JOIN applications ON users.id = applications.userId`,
-      (err, data) => {
-        if (err) {
-          reject(err);
-        }
-        resolve(data);
-      }
-    );
-  });
-};
-
-
-// ==========================================================================
-//===========JOB OFFERS ============
-// bringing job offers AHMED
-
-const GetjobOffers = function () {
-  return new Promise((resolve, reject) => {
-    connection.query("SELECT * FROM joboffers", (err, data) => {
+    connection.query("SELECT * FROM company", (err, data) => {
       if (err) {
         reject(err);
       }
@@ -198,6 +169,39 @@ const GetjobOffers = function () {
     });
   });
 };
+
+
+// const getUsersWhoApplied = function () {
+//   return new Promise((resolve, reject) => {
+//     connection.query(
+//       `SELECT * FROM users INNER JOIN applications ON users.id = applications.userId`,
+//       (err, data) => {
+//         if (err) {
+//           reject(err);
+//         }
+//         resolve(data);
+//       }
+//     );
+//   });
+// };
+// const getAppliedJobsByusers = function () {
+//   return new Promise((resolve, reject) => {
+//     connection.query(
+//       `SELECT * FROM users INNER JOIN applications ON users.id = applications.userId`,
+//       (err, data) => {
+//         if (err) {
+//           reject(err);
+//         }
+//         resolve(data);
+//       }
+//     );
+//   });
+// };
+
+
+// ==========================================================================
+//===========JOB OFFERS ============
+
 
 // inserting job offers AHMED
 
@@ -297,9 +301,9 @@ const AddJobOffers = function (job) {
 // up there
 
 //=======================
-// bringing job offers
+// bringing job offers AHMED
 
-const jobOffers = function () {
+const GetjobOffers = function () {
   return new Promise((resolve, reject) => {
     connection.query("SELECT * FROM joboffers", (err, data) => {
       if (err) {
@@ -311,17 +315,7 @@ const jobOffers = function () {
 };
 
 
-// -*- bringing company informations for the company profile -*-\\
-const companyInfo = () => {
-  return new Promise((resolve, reject) => {
-    connection.query("SELECT * FROM company", (err, data) => {
-      if (err) {
-        reject(err);
-      }
-      resolve(data);
-    });
-  });
-};
+
 
 module.exports = {
   getUser,
@@ -340,8 +334,8 @@ module.exports = {
   companyInfo,
 
 
-  getUsersWhoApplied,
-  getAppliedJobsByusers
+  // getUsersWhoApplied,
+  // getAppliedJobsByusers
 
 };
 /////////////////////////////////////

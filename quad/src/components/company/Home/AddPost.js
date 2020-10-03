@@ -36,7 +36,7 @@ class AddPost extends Component {
     axios
       .post("http://127.0.0.1:3008/jobs", this.state)
       .then((res) => console.log(res, "RES"))
-      .catch((err) => console.error("[client side error]", err));
+      .catch((err) => console.error("[cpost jobs erroe]", err));
   }
 
   getInputVal(event, text) {

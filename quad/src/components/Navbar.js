@@ -19,11 +19,14 @@ export class Navbar extends React.Component {
     email: "",
     password: "",
     checkProfileType: true,
-    loginType: "Freelancer"
+    loginType: "freelancer"
   };
   this.handlePfileType = this.handlePfileType.bind(this);
   }
 
+  // componentDidMount(){
+  //   this.setState({loginType : this.props.userType})
+  // }
 //choice the type of profile type logging
 handlePfileType(){
   if(this.state.checkProfileType){

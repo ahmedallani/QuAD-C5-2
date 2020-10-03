@@ -41,7 +41,7 @@ constructor(props) {
                       </Link>
             </li>
             <li className="Ubtn">
-              <Link to="/Aplications" className="Ulink" >
+              <Link to="/Applications" className="Ulink" >
                 Aplications
                       </Link>
             </li>

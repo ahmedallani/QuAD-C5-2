@@ -18,10 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 ////////////////////////////////////// FREELANCER SECTION CRUD
-// add freelancer in DB  
+// add freelancer in DB  OK
 app.post('/signup', async (req, res)  => {
-    console.log('req.body');
-    console.log('req.body ====>',req.body);
     try {
         const data = await db.addUser(req.body);
         res.status(200).send(data);
@@ -31,7 +29,7 @@ app.post('/signup', async (req, res)  => {
     }
 });
 
-// checking if freelancer login data is valid
+// checking if freelancer login data is valid OK
 app.post('/login', async (req, res) => {
     try {
         const data = await db.getUser(req.body.email);
@@ -42,6 +40,15 @@ app.post('/login', async (req, res) => {
             }
         
     }catch (err) {console.log(err)}
+});
+// getting job offers OK
+app.get("/home", async (req, res) => {
+  try {
+    const jobsData = await db.jobOffers();
+    res.status(200).send(jobsData);
+  } catch (err) {
+    console.error(err);
+  }
 });
 
 // apply for a job offer
@@ -95,7 +102,7 @@ app.post("/Applications/deleteApp", async (req, res) => {
 });
 
 ////////////////////////////////////////////// COMPANY SECTION CRUD
-// add company in DB
+// add company in DB OK
 app.post('/signup/company', async (req, res) => {
     try{
         const Cdata = await db.addCompanySignUpData(req.body);
@@ -104,7 +111,7 @@ app.post('/signup/company', async (req, res) => {
     catch (e) {res.send(e)}
 });
 
-// checking if freelancer login data is valid 
+// checking if company login data is valid OK
 app.post('/login/company', async (req, res) => {
     try {
         const data = await db.GetCompanySignUpData(req.body.email);
@@ -115,7 +122,64 @@ app.post('/login/company', async (req, res) => {
     }catch (err) {console.log(err)}
 });
 
+ // Company signUp // AHMED
 
+// get all jobs
+app.get('/signup/company', async (req, res) => {
+    try {
+      const codata = await db.GetCompanySignUpData();
+    res.status(200).send(codata)
+ }
+ catch (err) {res.send(err)}
+})
+
+// -*- sending company informatuions to the company profile -*- \\
+app.get("/profile", async (req, res) => {
+    try {
+      const companyInfos = await db.companyInfo();
+      res.status(200).send(companyInfos);
+    } catch (err) {
+      console.log(" we can't give you data ", err);
+    }
+  });
+
+//    inserting job offers // AHMED
+app.post('/jobs', async(req,res) => {
+    console.log('req',req.body)
+      try{
+          const addedJobs = await db.AddJobOffers(req.body);
+  
+          res.status(200).send(addedJobs)
+      }catch(err) {
+          console.log('[server side joboffers insert]',err)
+      }
+  });
+
+  //  getting job offers // AHMED
+
+app.get('/jobs', async (req, res) => {
+    try{
+        const jobsData = await db.GetjobOffers();
+        res.status(200).send(jobsData);
+    }
+    catch (err) {
+        console.error(err);
+    }
+});
+
+
+
+//   
+  app.get('/application', async (req, res) => {
+    try {
+      const companyInfos = await db.getUsersWhoApplied();
+      res.send(companyInfos);
+    }
+    catch (err) {
+       console.log(err)
+      }
+  })
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // checking if login data is valid // AHMED
 // app.post('/login', async (req, res) => {
 //     try {
@@ -158,40 +222,10 @@ app.post('/login/company', async (req, res) => {
 //     }
 // });
 //=========JOB OFFERS=====================
-  //  getting job offers // AHMED
+  
 
-app.get('/jobs', async (req, res) => {
-    try{
-        const jobsData = await db.GetjobOffers();
-        res.status(200).send(jobsData);
-    }
-    catch (err) {
-        console.error(err);
-    }
-});
-
-//    inserting job offers // AHMED
-app.post('/jobs', async(req,res) => {
-  console.log('req',req.body)
-    try{
-        const addedJobs = await db.AddJobOffers(req.body);
-
-        res.status(200).send(addedJobs)
-    }catch(err) {
-        console.log('[server side joboffers insert]',err)
-    }
-});
 //======================================================
-  // Company signUp // AHMED
-
-
-// app.get('/signup/company', async (req, res) => {
-//     try {
-//       const codata = await db.GetCompanySignUpData();
-//     res.status(200).send(codata)
-//  }
-//  catch (err) {res.send(err)}
-// })
+ 
 
 
 
@@ -269,60 +303,36 @@ app.post('/jobs', async(req,res) => {
 //   }
 // });
 
-// getting job offers
-app.get("/home", async (req, res) => {
-  try {
-    const jobsData = await db.jobOffers();
-    res.status(200).send(jobsData);
-  } catch (err) {
-    console.error(err);
-  }
-});
+
 // Company signUp
-app.post("/signup", async (req, res) => {
-  try {
-    const Cdata = await db.addCompanySignUpData();
-    res.status(200).send(Cdata);
-  } catch (e) {
-    res.send(e);
-  }
-});
-app.post("/login", async (req, res) => {
-  try {
-    const data = await db.addCompanySignUpData();
-    console.log("[Log in all data]", data);
-    for (var i = 0; i < data.length; i++) {
-      var elm = data[i];
-      if (elm.Email === req.body.email && elm.Password === req.body.password) {
-        res.status(200).send("successfully Logged In !");
-      }
-    }
-  } catch (err) {
-    console.log(err);
-  }
-
-  //
-});
-
-// -*- sending company informatuions to the company profile -*- \\
-// app.get("/profile", async (req, res) => {
+// app.post("/signup", async (req, res) => {
 //   try {
-//     const companyInfos = await db.companyInfo();
-//     res.status(200).send(companyInfos);
-//   } catch (err) {
-//     console.log(" we can't give you data ", err);
+//     const Cdata = await db.addCompanySignUpData();
+//     res.status(200).send(Cdata);
+//   } catch (e) {
+//     res.send(e);
 //   }
 // });
+// app.post("/login", async (req, res) => {
+//   try {
+//     const data = await db.addCompanySignUpData();
+//     console.log("[Log in all data]", data);
+//     for (var i = 0; i < data.length; i++) {
+//       var elm = data[i];
+//       if (elm.Email === req.body.email && elm.Password === req.body.password) {
+//         res.status(200).send("successfully Logged In !");
+//       }
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
+
+//   //
+// });
+
+
 ////////////////////////////////////////////////////////
-app.get('/application', async (req, res) => {
-  try {
-    const companyInfos = await db.getUsersWhoApplied();
-    res.send(companyInfos);
-  }
-  catch (err) {
-     console.log(err)
-    }
-})
+
 
 app.listen(port,
      () => console.log(`server is listening on port ${port}`));

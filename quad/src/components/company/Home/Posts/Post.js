@@ -19,8 +19,8 @@ class Post extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      JobOffersContainer: [],
-      CompanyDataContainer: []
+      JobOffersContainer: []
+      
     };
   }
   componentDidMount() {
@@ -28,24 +28,21 @@ class Post extends Component {
       .then((res) => this.setState({ JobOffersContainer: res.data }))
       .catch((err) => console.log("[client side err]", err));
 
-    axios.get("http://127.0.0.1:3008/signup/company")
-      .then((res) => this.setState({ CompanyDataContainer: res.data }))
-      .catch((err) => console.log("[client side err]", err));
+    
   }
   render(props) {
     
-    console.log("this JobOffersContainer ===>", this.state.JobOffersContainer);
-    console.log("this company ", this.state.CompanyDataContainer);
-
-    const post = this.state.JobOffersContainer.map((elm, key) =>
-    this.state.CompanyDataContainer.map((coelm, key) => {
-      return (
+    console.log("this JobOffersContainer ===>", this.props.offers);
+    console.log("this company ", this.props.company);
+    const offers = this.props.offers;
+    const post = offers.map((elm, key) => 
+      
         <Row key={key} className="container">
             <Card className="feedCard" body>
               <div className="feedCardS">
                 <Card>
                   <CardBody>
-                    <CardTitle>{coelm.Name}</CardTitle>
+                    <CardTitle>{elm.Name}</CardTitle>
                     <CardText>{elm.JobTitle}</CardText>
                     <CardText>
                       <small className="text-muted">
@@ -58,9 +55,8 @@ class Post extends Component {
               </div>
             </Card>
         </Row>
-      );
-      })
-      );
+      
+      )
       return ( 
       <div>{post}</div>
       )

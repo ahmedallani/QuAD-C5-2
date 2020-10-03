@@ -63,7 +63,7 @@ componentDidUpdate(previousProps, previousState) {
     let compo;
     if (this.state.handelcomponents === 1){
       compo = <div>
-              <Navbar homeFreelancer = {this.homeFreelancer} />
+              <Navbar userType={this.state.status} homeFreelancer = {this.homeFreelancer} />
               <Signup />
               </div>
     }
