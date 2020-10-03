@@ -18,7 +18,8 @@ export class Navbar extends React.Component {
   this.state = {
     email: "",
     password: "",
-    checkProfileType: true
+    checkProfileType: true,
+    loginType: "Freelancer"
   };
   this.handlePfileType = this.handlePfileType.bind(this);
   }
@@ -26,9 +27,9 @@ export class Navbar extends React.Component {
 //choice the type of profile type logging
 handlePfileType(){
   if(this.state.checkProfileType){
-  this.setState({checkProfileType: false});
+  this.setState({checkProfileType: false, loginType: "Company"});
   }else{
-    this.setState({checkProfileType: true});
+    this.setState({checkProfileType: true, loginType: "Freelancer"});
   }
   console.log(this.state.checkProfileType)
 }
@@ -77,7 +78,7 @@ handlePfileType(){
                     onClick={this.handlePfileType}
                     id="submitLog"
                   >
-                    Check LoT
+                    {this.state.loginType}
                   </Button>
                 </li>
                 <li className="btn">

@@ -58,6 +58,7 @@ class EditProfile extends React.Component {
   handelProfile = () => {
     this.props.handelPublic()
   }
+  
   save() {
     let body = {
       user:
@@ -81,6 +82,21 @@ class EditProfile extends React.Component {
 
     // this.setState({this.props.})
   }
+
+  // sendData = () => {
+  //   // let body = {
+  //   //   Avatar: this.state.file,
+  //   //   FirstName: this.state.FirstName,
+  //   //   LastName: this.state.LastName,
+  //   //   Email: this.state.Email,
+  //   //   Age : this.state.Age, 
+  //   //   PhoneNumber : this.state.PhoneNumber,
+  //   //   Descreption : this.state.Descreption,
+  //   //   Skills : this.state.Skills};
+  //   let body = "wiiiow"
+  //   this.props.profileCallback(body)
+  // }
+
 
   render() {
     

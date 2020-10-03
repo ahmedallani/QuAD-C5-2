@@ -259,21 +259,8 @@ const AddJobOffers = function (job) {
 // };
 
 
-/// Just for cheking numbers pring it
-// // get the signed in freelancer
-// const getUser = function (email) {
-//   return new Promise((resolve, reject) => {
-//     connection.query(
-//       `SELECT * FROM users where Email = '${email}' `,
-//       (err, data) => {
-//         if (err) {
-//           reject(err);
-//         }
-//         resolve(data);
-//       }
-//     );
-//   });
-// };
+
+
 
 // module.exports = {
 
