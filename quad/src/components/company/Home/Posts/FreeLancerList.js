@@ -14,7 +14,7 @@ class FreeLancerList extends Component {
     axios.get("http://127.0.0.1:3008/application")
       .then((res) => this.setState({FreeLancers: res.data}))
       .catch((err) => console.log("[client side err]", err));
-  }
+    }
 
   render() {
     console.log("this");

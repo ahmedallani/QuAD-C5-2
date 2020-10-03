@@ -86,8 +86,6 @@
   position: relative;
 }
 
-
-
 #detailsBtn {
   float: right;
   width: 17%;
@@ -142,10 +140,16 @@
 
 .comapny-avatar{
    border-radius: 50%;
+   position: relative;
+   left:2vw;
+   top:1vw;
 }
 
 .company-profile{
-  width:30%;
+  width:65%;
+  position: relative;
+  left:15vw;
+  top:3vw;
 }
 .starts{
   position: relative;
@@ -156,3 +160,93 @@
   left:27vw;
 }
 
+.freelancerApplied{
+    position: relative;
+    float: right;
+    margin: 0.5%;
+}
+
+#exampleText{
+  width: 120%;
+}
+
+#companyName{
+  position: relative;
+  top:-11vw;
+  left:17vw;
+  font-size: 50px;
+}
+
+#companyEmail{
+  position: relative;
+  top:-10vw;
+  left:17vw;
+  font-size: 20px;
+}
+#companyLocation{
+  position: relative;
+  top:-9vw;
+  left:17vw;
+  font-size: 20px;
+}
+
+#UserFName{
+position: relative;
+left:1vw;
+font-size:30px;
+}
+#UserLName{
+position: relative;
+left:1vw;
+font-size:25px;
+}
+#UserAge{
+position: relative;
+left:1vw;
+font-size:20px;
+}
+#UserEmail{
+position: relative;
+left:1vw;
+font-size:20px;
+}
+#UserPhone{
+position: relative;
+left:1vw;
+font-size:20px;
+}
+#UserDescription{
+position: relative;
+left:1vw;
+font-size:20px;
+}
+#UserSkills{
+position: relative;
+left:1vw;
+font-size:20px;
+}
+
+.userProfile{
+  width:43%;
+  position: relative;
+  left:8vw;
+}
+.userInfoCard{
+  position: relative;
+  left:15vw;
+  top:-8vw;
+  width: 60%;
+  height:350px;
+}
+.feeds{
+  position: relative;
+  left:25vw;
+  top:30vw;
+  
+}
+
+#msgProfile{
+  position: relative;
+  top:-2vw;
+
+}
