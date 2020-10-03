@@ -16,7 +16,7 @@ export default class CompanySection extends Component {
         return (
           <Router>
             <CompanyNavbar />
-            <Route exact path="/" component={Home}/>
+            <Route exact path="/" render={() => <Home company={this.props.company} />}/>
             <Route path="/Profile" component={Profile} />
             <Route path="/logout" component={Profile} />
           </Router>

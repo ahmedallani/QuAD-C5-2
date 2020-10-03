@@ -21,7 +21,14 @@ class EditProfile extends React.Component {
     this.handleChangeAvatar = this.handleChangeAvatar.bind(this)
     this.handleChangeAge = this.handleChangeAge.bind(this);
   }
- 
+  componentDidMount(){
+
+
+  }
+   
+   componentDidUpdate(){
+     console.log('update')
+   }
   handleChange(event) {
     if(event.target.value){
     this.setState({ [event.target.name]: event.target.value });
