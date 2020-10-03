@@ -6,6 +6,7 @@ class CompanySign extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      status : "company",
       CompanyName: "",
       Email: "",
       Password: "",
@@ -22,6 +23,7 @@ class CompanySign extends React.Component {
 
   async signUp() {
     let body = {
+      Status: this.state.status,
       Name: this.state.CompanyName,
       Email: this.state.Email,
       Password: this.state.Password

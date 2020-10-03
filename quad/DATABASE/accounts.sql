@@ -6,6 +6,7 @@ USE quad;
 
 CREATE TABLE users (
     id int NOT NULL AUTO_INCREMENT,
+    Status varchar(25),
     Avatar varchar(50),
     FirstName varchar(20),
     LastName varchar(20),
@@ -29,6 +30,7 @@ CREATE TABLE jobOffers (
 
 CREATE TABLE company (
     id int NOT NULL AUTO_INCREMENT,
+    Status varchar(25),
     Name varchar(25),
     Email varchar(25),
     Password varchar(25),
@@ -48,17 +50,17 @@ CREATE TABLE applications (
 -- copy this in the terminal mysql
 -- mysql -u root -p < accounts.sql
 
-INSERT INTO users (id, FirstName ,LastName, Email, Password) VALUES (1,"Ahmed","Ezzine","QuiteB@Deadly.com","test");
-INSERT INTO users (id, FirstName ,LastName, Email, Password) VALUES (2,"Ahmed","Ezzine","QuiteB@Deadly.com","test");
+INSERT INTO users (id, Status, FirstName ,LastName, Email, Password) VALUES (1,"freelancer", "Ahmed","Ezzine","QuiteB@Deadly.com","test");
+INSERT INTO users (id, Status, FirstName ,LastName, Email, Password) VALUES (2,"freelancer", "Ahmed","Ezzine","QuiteB@Deadly.com","test");
 
 INSERT INTO jobOffers (id ,companyId,JobTitle,Description) VALUES (1,"companyName","CompanyTitle","789");
 INSERT INTO jobOffers (id ,companyId,JobTitle,Description) VALUES (2,"Ezzines company","test","freeelance");
 INSERT INTO jobOffers (id ,companyId,JobTitle,Description) VALUES (3,"7851","CompanyTitle","123");
 -- 
 
-INSERT INTO company (id, Name, Email, Password,Location,PhoneNumber) VALUES (1, 'TEST', 'TEST@GMAIL.COM', 'PWDTEST123', 'TUNISIA',785452);
-INSERT INTO company (id, Name, Email, Password,Location,PhoneNumber) VALUES (2, '2TEST', '2TEST@GMAIL.COM', '2PWDTEST123', '2TUNISIA',412287451);
-INSERT INTO company (id, Name, Email, Password,Location,PhoneNumber) VALUES (3, '3TT', '3-TEST@GMAIL.COM', '3-PWDTEST123', '3-TUNISIA',552858);
+INSERT INTO company (id, Status, Name, Email, Password,Location,PhoneNumber) VALUES (1, 'company', 'TEST', 'TEST@GMAIL.COM', 'PWDTEST123', 'TUNISIA',785452);
+INSERT INTO company (id, Status, Name, Email, Password,Location,PhoneNumber) VALUES (2, 'company', '2TEST', '2TEST@GMAIL.COM', '2PWDTEST123', '2TUNISIA',412287451);
+INSERT INTO company (id, Status, Name, Email, Password,Location,PhoneNumber) VALUES (3, 'company', '3TT', '3-TEST@GMAIL.COM', '3-PWDTEST123', '3-TUNISIA',552858);
 
 
 

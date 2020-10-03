@@ -13,10 +13,27 @@ import { Form, FormGroup, Input, Button } from "reactstrap";
 
 // create a new component for log in.
 export class Navbar extends React.Component {
-  state = {
+  constructor(props) {
+    super(props);
+  this.state = {
     email: "",
     password: "",
+    checkProfileType: true
   };
+  this.handlePfileType = this.handlePfileType.bind(this);
+  }
+
+//choice the type of profile type logging
+handlePfileType(){
+  if(this.state.checkProfileType){
+  this.setState({checkProfileType: false});
+  }else{
+    this.setState({checkProfileType: true});
+  }
+  console.log(this.state.checkProfileType)
+}
+
+
   // watching the change inside value.
   handleChange = (e) => {
     this.setState({[e.target.id]: e.target.value});
@@ -32,11 +49,15 @@ export class Navbar extends React.Component {
       password: this.state.password
     };
     // condition for rendering the section
-    
+    if(this.state.checkProfileType){
     axios.post("http://127.0.0.1:3008/login", user)
       .then(response => this.props.homeFreelancer(response.data))
       .catch(err =>  console.log('[client side login error]',err) );
-    
+    } else {
+    axios.post('http://127.0.0.1:3008/login/company', user)
+    .then(response => this.props.homeFreelancer(response.data))
+    .catch(err =>  console.log('[client side login error]',err) );
+    }
   };
 
 
@@ -51,6 +72,14 @@ export class Navbar extends React.Component {
                 QuAD
               </li>
               <div className="loginBar">
+              <li className="btn">
+                  <Button
+                    onClick={this.handlePfileType}
+                    id="submitLog"
+                  >
+                    Check LoT
+                  </Button>
+                </li>
                 <li className="btn">
                   <Input
                     className="input"

@@ -15,23 +15,23 @@ const connection = mysql.createConnection(mysqlConfig);
 //   });
 // };
 
-//AHMED
-// const addUsers = function (user) {
-//   console.log("users =======>", user);
-//   return new Promise((resolve, reject) => {
-//     connection.query(`INSERT INTO users SET ?`, user, (err, data) => {
-//       if (err) {
-//         reject(err);
-//       }
-//       resolve(data);
-//     })
-//   })
-// }
+/////////////////////////////// FREELANCER SECTION////////////////////////////////////////////
+// Add freelance in DB
 
+const addUser = function (user) {
+  console.log("users =======>", user);
+  return new Promise((resolve, reject) => {
+    connection.query(`INSERT INTO users SET ?`, user, (err, data) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
+    });
+  });
+};
 // get the signed in freelancer
 const getUser = function (email) {
   return new Promise((resolve, reject) => {
-
     connection.query(
       `SELECT * FROM users where Email = '${email}' `,
       (err, data) => {
@@ -43,6 +43,23 @@ const getUser = function (email) {
     );
   });
 };
+// edit freelancer profile
+const editUser = function (user) {
+  console.log(`=======<huih"`);
+  return new Promise((resolve, reject) => {
+
+
+    const {user:use,id} = user
+    // console.log(`UPDATE  users SET ${Object.entries(use).filter(pair =>!!pair[1]).map(pair =>[pair[0],`"${pair[1]}"`].join("=") ).join(", ")} WHERE id = '${id}'`);
+    
+    connection.query(`UPDATE  users SET ${Object.entries(use).filter(pair =>!!pair[1]).map(pair =>[pair[0],`"${pair[1]}"`].join("=") ).join(", ")} WHERE id = '${id}'`, (err, data) => {
+      if (err) { reject(err) }
+      resolve(data)
+
+    });
+  });
+};
+
 // add application
 const apply = function (Ids) {
   console.log("Ids =======>", Ids);
@@ -108,9 +125,36 @@ const delApp = async (data) => {
     console.log(err);
   }
 };
-// console.log(delApp({ userId: 3, jobOfferId: 1 }), "delApp");
 
-// get userIfos if the userId equal to userInfoId
+
+
+/////////////////////////////// COMPANY SECTION ///////////////////////////////////////
+// Add company in DB
+const addCompanySignUpData = function (Cdata) {
+  console.log("Cdata =======>", Cdata);
+  return new Promise((resolve, reject) => {
+    connection.query(`INSERT INTO company SET ?`, Cdata, (err, data) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
+    });
+  });
+};
+
+// get the signed in company
+
+const GetCompanySignUpData = function (email) {
+  return new Promise((resolve, reject) => {
+    connection.query(`SELECT * FROM company where Email = '${email}'`, (err, data) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
+    });
+  });
+};
+
 
 const getUsersWhoApplied = function () {
   return new Promise((resolve, reject) => {
@@ -202,17 +246,34 @@ const AddJobOffers = function (job) {
 //     });
 //   });
 // };
-const GetCompanySignUpData = function (company) {
-  console.log("companys GET =======>", company);
-  return new Promise((resolve, reject) => {
-    connection.query(`SELECT * FROM company`, (err, CompanyData) => {
-      if (err) {
-        reject(err);
-      }
-      resolve(CompanyData);
-    });
-  });
-};
+// const GetCompanySignUpData = function (company) {
+//   console.log("companys GET =======>", company);
+//   return new Promise((resolve, reject) => {
+//     connection.query(`SELECT * FROM company`, (err, CompanyData) => {
+//       if (err) {
+//         reject(err);
+//       }
+//       resolve(CompanyData);
+//     });
+//   });
+// };
+
+
+/// Just for cheking numbers pring it
+// // get the signed in freelancer
+// const getUser = function (email) {
+//   return new Promise((resolve, reject) => {
+//     connection.query(
+//       `SELECT * FROM users where Email = '${email}' `,
+//       (err, data) => {
+//         if (err) {
+//           reject(err);
+//         }
+//         resolve(data);
+//       }
+//     );
+//   });
+// };
 
 // module.exports = {
 
@@ -236,35 +297,9 @@ const GetCompanySignUpData = function (company) {
 // };
 
 ////////////////////// SLIM's REPO
-// Sign Up
-// ==========================================================================
-const addUser = function (user) {
-  console.log("users =======>", user);
-  return new Promise((resolve, reject) => {
-    connection.query(`INSERT INTO users SET ?`, user, (err, data) => {
-      if (err) {
-        reject(err);
-      }
-      resolve(data);
-    });
-  });
-};
-
-const editUser = function (user) {
-  console.log(`=======<huih"`);
-  return new Promise((resolve, reject) => {
 
 
-    const {user:use,id} = user
-    // console.log(`UPDATE  users SET ${Object.entries(use).filter(pair =>!!pair[1]).map(pair =>[pair[0],`"${pair[1]}"`].join("=") ).join(", ")} WHERE id = '${id}'`);
-    
-    connection.query(`UPDATE  users SET ${Object.entries(use).filter(pair =>!!pair[1]).map(pair =>[pair[0],`"${pair[1]}"`].join("=") ).join(", ")} WHERE id = '${id}'`, (err, data) => {
-      if (err) { reject(err) }
-      resolve(data)
 
-    });
-  });
-};
 
 
 // get the signed in freelancer
@@ -288,17 +323,7 @@ const jobOffers = function () {
   });
 };
 
-const addCompanySignUpData = function (Cdata) {
-  console.log("Cdata =======>", Cdata);
-  return new Promise((resolve, reject) => {
-    connection.query(`INSERT INTO company SET ?`, Cdata, (err, data) => {
-      if (err) {
-        reject(err);
-      }
-      resolve(data);
-    });
-  });
-};
+
 // -*- bringing company informations for the company profile -*-\\
 const companyInfo = () => {
   return new Promise((resolve, reject) => {

@@ -10,6 +10,7 @@ import Signup from "./components/Signup.js";
 // import bootstrap.
 import "bootstrap/dist/css/bootstrap.css";
 import FreelancerProfile from "./components/freelancer/Profile/FreelancerProfile";
+import CompanySection from "./components/company/CompanySection";
 // import FreelancerProfile from "./components/freelancer/Profile/FreelancerProfile.js"
 
 // const App = () => {
@@ -43,9 +44,16 @@ componentDidUpdate(previousProps, previousState) {
 }
  // rename to landing page
   homeFreelancer(user){
+    if(user.Status === 'freelancer'){
     this.setState({
       user : user,
       handelcomponents: 2});
+    } else {
+      this.setState({
+        user : user,
+        handelcomponents: 3});
+    }
+
   }
   logoutFunc (){
     this.setState({handelcomponents: 1, user: null });
@@ -61,6 +69,9 @@ componentDidUpdate(previousProps, previousState) {
     }
    if (this.state.handelcomponents === 2){
      compo = <FreelancerSection freelancer={this.state.user} logoutFunc={this.logoutFunc}  />
+   }
+   if (this.state.handelcomponents === 3){
+     compo = <CompanySection company={this.state.user}/>
    }
 
 
