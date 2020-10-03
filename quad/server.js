@@ -170,6 +170,16 @@ app.get('/signup/company', async (req, res) => {
  catch (err) {res.send(err)}
 })
 
+// // Getting All the Signed In Companys // NUMBERS 
+// app.get('/signupCom', async (req, res) => {
+//   try{
+//       const allDataC = await db.getCompany();
+//       res.status(200).send(allDataC);
+//   }
+//   catch (err) {
+//       console.error(err);
+//   }
+// }); 
 // app.post('/login/company', async (req, res) => {
 //     try {
 //         const data = await db.addCompanySignUpData();
