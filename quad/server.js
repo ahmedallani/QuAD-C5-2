@@ -189,17 +189,18 @@ app.get('/signup/company', async (req, res) => {
 // up there
 //Get the freelancer job applications
 // up there
+// Getting All the Signed In Users // AHMED
 
-// Getting All the Signed In Users
-app.get('/signup', async (req, res) => {
-    try{
-        const allData = await db.getUsers();
-        res.status(200).send(allData);
-    }
-    catch (err) {
-        console.error(err);
-    }
-})
+// // Getting All the Signed In Users
+// app.get('/signup', async (req, res) => {
+//     try{
+//         const allData = await db.getUsers();
+//         res.status(200).send(allData);
+//     }
+//     catch (err) {
+//         console.error(err);
+//     }
+// })
 // checking if login data is valid
 app.post('/login', async (req, res) => {
     try {
