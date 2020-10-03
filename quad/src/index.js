@@ -2,9 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js'
 import './index.css';
+
 // import FreeLancerList from './components/company/Home/Posts/FreeLancerList.js'
+
+
+// import './App.css'
+
+import FreeLancerList from './components/company/Home/Posts/FreeLancerList.js'
+
 import AddPost from './components/company/Home/AddPost.js'
 import Post from './components/company/Home/Posts/Post.js'
+
 // import Post from './components/company/Home/Posts/Post.js'
 
 

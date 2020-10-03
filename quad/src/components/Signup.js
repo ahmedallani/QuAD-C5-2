@@ -27,8 +27,14 @@ class Signup extends React.Component {
       compo = <CompanySign />;
     }
     return (
+      <div>
+      <div>Welcome to the sQuAD ! <br/><br/> 
+      Our objectiv is to connect the dots between developpers and companies striving for awesome people like YOU !<br/>
+      What are you waiting for? <br/>
+      Create you account right now and let the world see your amazing skills.
+      </div>
       <div className="signup">
-        <Label id="logotext"> You don't have an account? Create one </Label>
+        <Label id="logotext"> It's time to join the sQuAD! <br/> Click on the button that describes your status and let the Journey begin </Label>
         <br />
         <Button
           outline
@@ -47,6 +53,7 @@ class Signup extends React.Component {
           Company
         </Button>
         {compo}
+      </div>
       </div>
     );
   }

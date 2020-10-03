@@ -25,9 +25,13 @@ class Post extends Component {
   constructor(props) {
     super(props);
     this.state = {
+
       JobOffersContainer: [],
       CompanyDataContainer: [],
       openModal: false,
+
+   
+
       
     };
   }
@@ -37,6 +41,7 @@ class Post extends Component {
       .get("http://127.0.0.1:3008/jobs")
       .then((res) => this.setState({ JobOffersContainer: res.data }))
       .catch((err) => console.log("[client side err]", err));
+
 
     axios
       .get("http://127.0.0.1:3008/signup/company")
@@ -61,9 +66,13 @@ class Post extends Component {
 
   closeModalByClick() {
     this.setState({ openModal: false });
+
+    
+
   }
 
   render(props) {
+
     console.log("this JobOffersContainer ===>", this.state.JobOffersContainer);
     console.log("this company ", this.state.CompanyDataContainer);
 
@@ -71,10 +80,20 @@ class Post extends Component {
       this.state.CompanyDataContainer.map((coelm, key) => {
         return (
           <Row key={key} className="container">
+
+    
+//     console.log("this JobOffersContainer ===>", this.props.offers);
+//     console.log("this company ", this.props.company);
+//     const offers = this.props.offers;
+//     const post = offers.map((elm, key) => 
+      
+//         <Row key={key} className="container">
+
             <Card className="feedCard" body>
               <div className="feedCardS">
                 <Card>
                   <CardBody>
+// <<<<<<< ghasseneljday
                     <CardTitle>{coelm.Name}</CardTitle>
                     <CardSubtitle>{elm.JobTitle}</CardSubtitle>
                   </CardBody>
@@ -90,10 +109,21 @@ class Post extends Component {
                     >
                       Freelancer applied
                     </Button>
+// =======
+//                     <CardTitle>{elm.Name}</CardTitle>
+//                     <CardText>{elm.JobTitle}</CardText>
+//                     <CardText>
+//                       <small className="text-muted">
+//                         Last updated 3 mins ago
+//                       </small>
+//                     </CardText>
+//                     <CardText>{elm.Description}.</CardText>
+// >>>>>>> master
                   </CardBody>
                 </Card>
               </div>
             </Card>
+// <<<<<<< ghasseneljday
 
             <Modal isOpen={this.state.openModal === true}>
               <ModalHeader>Modal title</ModalHeader>
@@ -130,6 +160,15 @@ class Post extends Component {
       })
     );
     return <div>{post}</div>;
+// =======
+//         </Row>
+      
+//       )
+//       return ( 
+//       <div>{post}</div>
+//       )
+//     }
+// >>>>>>> master
   }
 }
 

@@ -6,23 +6,25 @@ class CompanySign extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      status : "company",
       CompanyName: "",
       Email: "",
       Password: "",
       Cpassword: ""
     };
-    this.getSign = this.getSign.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.signUp = this.signUp.bind(this);
   }
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-    console.log("=====>",event.target)
+    // console.log("=====>",event.target)
   }
 
-  async getSign() {
+  async signUp() {
     let body = {
-      CompanyName: this.state.CompanyName,
+      Status: this.state.status,
+      Name: this.state.CompanyName,
       Email: this.state.Email,
       Password: this.state.Password
     };
@@ -34,16 +36,15 @@ class CompanySign extends React.Component {
       alert("wrong email !");
     }else{
     axios
-      .post("", body)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .post("http://127.0.0.1:3008/signup/company", body)
+      .then(response => console.log('[Company side SignUp]',response.data))
+      .catch(error  => console.log(error));
+      }
+    
+      
 
     }
-  }
+  
 
   render() {
     return (
@@ -77,7 +78,7 @@ class CompanySign extends React.Component {
             onChange={this.handleChange}
           />
           <br />
-          <Button color="primary" type="submit">Submit</Button>
+          <Button color="primary" type="submit" onClick={this.signUp}>Submit</Button>
         </div>
       </Form>
     );

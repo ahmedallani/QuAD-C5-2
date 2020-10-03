@@ -26,5 +26,5 @@
 //     }
 // }
 
-// export default Posts;
+export default Posts;
 // REMOVE THIS FILE !
