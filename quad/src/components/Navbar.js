@@ -31,7 +31,7 @@ export class Navbar extends React.Component {
       email: this.state.email,
       password: this.state.password
     };
-    
+    // condition for rendering the section
     
     axios.post("http://127.0.0.1:3008/login", user)
       .then(response => this.props.homeFreelancer(response.data))

@@ -288,10 +288,10 @@ const jobOffers = function () {
   });
 };
 
-const addCompanySignUpData = function (user) {
-  console.log("users =======>", user);
+const addCompanySignUpData = function (Cdata) {
+  console.log("Cdata =======>", Cdata);
   return new Promise((resolve, reject) => {
-    connection.query(`INSERT INTO company SET ?`, user, (err, data) => {
+    connection.query(`INSERT INTO company SET ?`, Cdata, (err, data) => {
       if (err) {
         reject(err);
       }

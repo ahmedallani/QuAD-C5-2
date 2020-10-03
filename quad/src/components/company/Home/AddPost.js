@@ -32,7 +32,7 @@ class AddPost extends Component {
   }
 
   PostAnOfferJob() {
-    console.log("yhis");
+    console.log("post job offer");
     axios
       .post("http://127.0.0.1:3008/jobs", this.state)
       .then((res) => console.log(res, "RES"))

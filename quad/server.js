@@ -66,11 +66,11 @@ app.post("/Applications/deleteApp", async (req, res) => {
   }
 });
 
-// Getting All the Signed In Users // AHMED
+// Getting  the Signed In User 
 app.get('/signup', async (req, res) => {
     try{
-        const allData = await db.getUser();
-        res.status(200).send(allData);
+        const user = await db.getUser();
+        res.status(200).send(user);
     }
     catch (err) {
         console.error(err);

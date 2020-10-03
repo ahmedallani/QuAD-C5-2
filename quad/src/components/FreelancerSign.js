@@ -85,7 +85,7 @@ class FreelancerSign extends React.Component {
             onChange={this.handleChange}
           />
           <br />
-          <Button color="primary"  onClick={this.getSign}>
+          <Button color="primary" type="submit"  onClick={this.getSign}>
             Submit
           </Button>
       

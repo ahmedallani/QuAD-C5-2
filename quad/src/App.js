@@ -41,7 +41,7 @@ componentDidUpdate(previousProps, previousState) {
   console.log('App did update')
 
 }
-
+ // rename to landing page
   homeFreelancer(user){
     this.setState({
       user : user,
