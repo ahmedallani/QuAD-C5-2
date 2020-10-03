@@ -63,13 +63,13 @@
 
 /* applications side */
 
-.posts {
+/* .posts {
   border: 0px solid;
   padding: 10px;
   box-shadow: -1px 2px 20px -5px #888888;
   width: 50vw;
   border-radius: 10px;
-}
+} */
 
 .feed {
   position: relative;
@@ -78,10 +78,15 @@
 
 .feedCard {
   width: 100%;
-  left: 35vw;
+  left: 0vw;
   top: -64.5%;
-  /* margin-top: -200%; */
 }
+
+.feedCardS{
+  position: relative;
+}
+
+
 
 #detailsBtn {
   float: right;
@@ -146,3 +151,8 @@
   position: relative;
   left:35%;
 }
+.addpostCard{
+  position: relative;
+  left:27vw;
+}
+

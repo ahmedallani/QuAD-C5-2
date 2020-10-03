@@ -1,7 +1,17 @@
 
 import React, { Component } from "react";
-import { Card, Button, CardTitle, CardImg, Row, Col } from "reactstrap";
-import { ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import {
+  Card,
+  Button,
+  CardTitle,
+  CardImg,
+  Row,
+  Col,
+  CardBody,
+  CardText,
+
+} from "reactstrap";
+// import { ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import './post.css'
 import axios from "axios";
 
@@ -9,56 +19,47 @@ class Post extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      JobOffersContainer: [],
-      CompanyDataContainer: [],
+      JobOffersContainer: []
+      
     };
   }
   componentDidMount() {
-    axios
-      .get("http://127.0.0.1:3008/jobs")
+    axios.get("http://127.0.0.1:3008/jobs")
       .then((res) => this.setState({ JobOffersContainer: res.data }))
       .catch((err) => console.log("[client side err]", err));
 
-    axios
-      .get("http://127.0.0.1:3008/signup/company")
-      .then((res) => this.setState({ CompanyDataContainer: res.data }))
-      .catch((err) => console.log("[client side err]", err));
-  }
-  render() {
     
-    console.log("this JobOffersContainer ===>", this.state.JobOffersContainer);
-    console.log("this company ", this.state.CompanyDataContainer);
-
-    const post = this.state.JobOffersContainer.map((elm, key) =>
-    this.state.CompanyDataContainer.map((coelm, key) => {
-      return (
+  }
+  render(props) {
+    
+    console.log("this JobOffersContainer ===>", this.props.offers);
+    console.log("this company ", this.props.company);
+    const offers = this.props.offers;
+    const post = offers.map((elm, key) => 
+      
         <Row key={key} className="container">
-            <Col sm="6">
-              <Card className="feedCard" body>
-                <div className="feedCardS">
-                  <CardTitle>Company name : {coelm.Name}</CardTitle>
-                  <CardTitle>Company job title : {elm.JobTitle}</CardTitle>
-                  <CardTitle>Job Title : {elm.Description} </CardTitle>
-                  <CardImg
-                    width="100%"
-                    src="https://reactstrap.github.io/assets/318x180.svg"
-                    alt="company image"
-                  />
-                  <br />
-                  <br />
-                  <Button color="primary" id="detailsBtn">
-                    See-Freelancers-Applies
-                  </Button>
-                </div>
-              </Card>
-              <br />
-              <br />
-            </Col>
-          </Row>
-        );
-      })
-      );
-      return <div>{post}</div>;
+            <Card className="feedCard" body>
+              <div className="feedCardS">
+                <Card>
+                  <CardBody>
+                    <CardTitle>{elm.Name}</CardTitle>
+                    <CardText>{elm.JobTitle}</CardText>
+                    <CardText>
+                      <small className="text-muted">
+                        Last updated 3 mins ago
+                      </small>
+                    </CardText>
+                    <CardText>{elm.Description}.</CardText>
+                  </CardBody>
+                </Card>
+              </div>
+            </Card>
+        </Row>
+      
+      )
+      return ( 
+      <div>{post}</div>
+      )
     }
   }
   
