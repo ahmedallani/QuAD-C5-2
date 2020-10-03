@@ -304,6 +304,17 @@ app.get('/jobs', async (req, res) => {
 // });
 
 
+
+// -*- sending company informatuions to the company profile -*- \\
+app.get("/profile", async (req, res) => {
+  try {
+    const companyInfos = await db.companyInfo();
+    res.status(200).send(companyInfos);
+  } catch (err) {
+    console.log(" we can't give you data ", err);
+  }
+});
+
 // Company signUp
 // app.post("/signup", async (req, res) => {
 //   try {
@@ -329,6 +340,7 @@ app.get('/jobs', async (req, res) => {
 
 //   //
 // });
+
 
 
 ////////////////////////////////////////////////////////

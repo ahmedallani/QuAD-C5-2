@@ -8,7 +8,7 @@ export default class Feeds extends Component {
             <div key={i}><Feed user={this.props.user} feed={job}/></div>
         )
         return (
-            <div>
+            <div className="feeds">
                 {listJobs}
             </div>
         )

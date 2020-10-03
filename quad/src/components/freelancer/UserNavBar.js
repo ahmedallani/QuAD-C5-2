@@ -13,7 +13,7 @@ export default class UserNavBar extends Component {
 constructor(props) {
   super(props);
 
-  this.logoutFunc= this.logoutFunc.bind(this);
+  // this.logoutFunc= this.logoutFunc.bind(this);
 }
 
   logoutFunc = () => {
