@@ -16,6 +16,7 @@ import {
   toggle,
   ModalFooter,
   Media,
+  Input,
 } from "reactstrap";
 // import { ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "./post.css";
@@ -25,14 +26,9 @@ class Post extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
       JobOffersContainer: [],
       CompanyDataContainer: [],
       openModal: false,
-
-
-
-
     };
   }
 
@@ -61,7 +57,7 @@ class Post extends Component {
     //     console.log(err);
     //   })
 
-    // this.setState({ openModal: true });
+    this.setState({ openModal: true });
   }
 
   closeModalByClick() {
@@ -75,36 +71,32 @@ class Post extends Component {
     console.log("this JobOffersContainer ===>", this.props.offers);
     console.log("this company ", this.props.company);
     const offers = this.props.offers;
-    const post = offers.map((elm, key) =>
-
+    const post = offers.map((elm, key) => (
       <Row key={key} className="container">
-
         <Card className="feedCard" body>
           <div className="feedCardS">
             <Card>
               <CardBody>
-                
-                <CardTitle>{elm.Name}</CardTitle>
-                <CardSubtitle>{elm.JobTitle}</CardSubtitle>
+                <CardTitle>{elm.Name} name</CardTitle>
+                <CardSubtitle>{elm.JobTitle} titel</CardSubtitle>
+
               </CardBody>
               <CardBody>
                 <CardText>{elm.Description}</CardText>
                 <Button className="freelancerApplied" color="danger">
                   Delete post
-                    </Button>
+                </Button>
                 <Button
-                  onClick={this.openModalByClick(elm.ID, elm.id)}
+                  onClick={this.openModalByClick.bind(this)}
                   className="freelancerApplied"
                   color="info"
                 >
                   Freelancer applied
-                    </Button>
-            
+                </Button>
               </CardBody>
             </Card>
           </div>
         </Card>
-        
 
         <Modal isOpen={this.state.openModal === true}>
           <ModalHeader>Modal title</ModalHeader>
@@ -120,24 +112,21 @@ class Post extends Component {
               <CardTitle>Card title</CardTitle>
               <CardSubtitle>Card subtitle</CardSubtitle>
               <CardText>
-                Some quick example text to build on the card title and make
-                up the bulk of the card's content.
-                  </CardText>
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </CardText>
               <Button>Button</Button>
             </CardBody>
           </Card>
 
           <ModalFooter>
-            <Button
-              color="danger"
-              onClick={this.closeModalByClick.bind(this)}
-            >
+            <Button color="danger" onClick={this.closeModalByClick.bind(this)}>
               Cancel
-                </Button>
+            </Button>
           </ModalFooter>
         </Modal>
       </Row>
-    );
+    ));
   
     
   return<div>{ post }</div>;

@@ -19,7 +19,7 @@ export class Navbar extends React.Component {
     email: "",
     password: "",
     checkProfileType: true,
-    loginType: "freelancer"
+    loginType: "Company",
   };
   this.handlePfileType = this.handlePfileType.bind(this);
   }
@@ -30,9 +30,9 @@ export class Navbar extends React.Component {
 //choice the type of profile type logging
 handlePfileType(){
   if(this.state.checkProfileType){
-  this.setState({checkProfileType: false, loginType: "Company"});
+  this.setState({ checkProfileType: false, loginType: "Freelancer" });
   }else{
-    this.setState({checkProfileType: true, loginType: "Freelancer"});
+    this.setState({checkProfileType: true, loginType: "Company"});
   }
   console.log(this.state.checkProfileType)
 }
@@ -76,14 +76,6 @@ handlePfileType(){
                 QuAD
               </li>
               <div className="loginBar">
-              <li className="btn">
-                  <Button
-                    onClick={this.handlePfileType}
-                    id="submitLog"
-                  >
-                    {this.state.loginType}
-                  </Button>
-                </li>
                 <li className="btn">
                   <Input
                     className="input"
@@ -105,10 +97,12 @@ handlePfileType(){
                   />
                 </li>
                 <li className="btn">
-                  <Button
-                    onClick={this.handleSubmit}
-                    id="submitLog"
-                  >
+                  <Button onClick={this.handlePfileType} id="submitLog">
+                    {this.state.loginType}
+                  </Button>
+                </li>
+                <li className="btn">
+                  <Button onClick={this.handleSubmit} id="submitLog">
                     Log in
                   </Button>
                 </li>
