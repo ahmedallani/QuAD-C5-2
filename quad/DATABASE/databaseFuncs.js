@@ -52,7 +52,8 @@ const editUser = function (user) {
 
 const jobOffers = function () {
   return new Promise((resolve, reject) => {
-    connection.query("SELECT * FROM joboffers", (err, data) => {
+    // _*_ it is jobOffers not joboffers
+    connection.query("SELECT * FROM jobOffers", (err, data) => {
       if (err) {
         reject(err);
       }
@@ -211,7 +212,7 @@ const AddJobOffers = function (job) {
     connection.query(
 //       `INSERT INTO joboffers (companyId ,JobTitle ,Description) VALUES ('${job.companyId}','${job.JobTitle}','${job.Description}')`,
 
-      `INSERT INTO joboffers SET ?`, job,
+      `INSERT INTO jobOffers SET ?`, job,
 
       (err, jobData) => {
         if (err) {
@@ -305,7 +306,7 @@ const AddJobOffers = function (job) {
 
 const GetjobOffers = function () {
   return new Promise((resolve, reject) => {
-    connection.query("SELECT * FROM joboffers", (err, data) => {
+    connection.query("SELECT * FROM jobOffers", (err, data) => {
       if (err) {
         reject(err);
       }
