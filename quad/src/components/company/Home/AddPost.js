@@ -20,6 +20,7 @@ class AddPost extends Component {
     this.state = {
       jobTitle: "",
       Description: "",
+
       Companyname: [],
       freelancerApp:[]
     };

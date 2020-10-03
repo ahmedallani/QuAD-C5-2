@@ -76,8 +76,8 @@ componentDidUpdate(previousProps, previousState) {
 
 
   return (
-  <FreelancerSection />
-  // <div>{compo}</div>
+  // <FreelancerSection />
+  <div>{compo}</div>
   );
 
 
