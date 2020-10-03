@@ -13,7 +13,7 @@ export default class UserNavBar extends Component {
 constructor(props) {
   super(props);
 
-  this.logoutFunc= this.logoutFunc.bind(this);
+  // this.logoutFunc= this.logoutFunc.bind(this);
 }
 
   logoutFunc = () => {
@@ -41,8 +41,8 @@ constructor(props) {
                       </Link>
             </li>
             <li className="Ubtn">
-              <Link to="/Applications" className="Ulink" >
-                Aplications
+              <Link to="/Aplications" className="Ulink" >
+                Applications
                       </Link>
             </li>
             <li className="Ubtn">

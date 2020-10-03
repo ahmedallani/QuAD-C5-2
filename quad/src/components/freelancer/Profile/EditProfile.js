@@ -21,14 +21,9 @@ class EditProfile extends React.Component {
     this.handleChangeAvatar = this.handleChangeAvatar.bind(this)
     this.handleChangeAge = this.handleChangeAge.bind(this);
   }
-  componentDidMount(){
-
-
-  }
+  
    
-   componentDidUpdate(){
-     console.log('update')
-   }
+   
   handleChange(event) {
     if(event.target.value){
     this.setState({ [event.target.name]: event.target.value });
@@ -47,14 +42,14 @@ class EditProfile extends React.Component {
     })
     console.log("=====>",event.target.files[0])
   }
-  componentDidMount(event){
+  // componentDidMount(event){
 
-    this.setState(state => {
-      state = this.props.freelance
+  //   this.setState(state => {
+  //     state = this.props.freelance
 
-    })
-    console.log("<=====>",this.state)
-  }
+  //   })
+  //   console.log("<=====>",this.state)
+  // }
   handelProfile = () => {
     this.props.handelPublic()
   }

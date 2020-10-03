@@ -7,7 +7,7 @@
 .loginBar {
   float: right;
   position: relative;
-  left: 55vw;
+  left: 45vw;
 }
 
 .Fbtn {
@@ -249,4 +249,28 @@ font-size:20px;
   position: relative;
   top:-2vw;
 
+}
+
+
+#welcomeText{
+  position: absolute;
+  width:50%;
+  top:15vw;;
+  left:10vw;
+  font-size:25px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+#editProfile{
+  position: relative;
+  left:40vw;
+  top:-6vw;
+}
+
+.post{
+  position: relative;
+  left:25vw;
+  top:5vw;
+  margin-bottom: 5%;
+  width:50%;
 }

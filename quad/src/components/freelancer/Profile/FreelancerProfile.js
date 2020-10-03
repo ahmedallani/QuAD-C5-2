@@ -18,7 +18,7 @@ class FreelancerProfile extends React.Component {
 //   console.log ('okok',this.state.budy);
 // }
 
-  // callbackFunction = (childData) => {
+//   callbackFunction = (childData) => {
    
 //     this.setState({budy: childData})
     
@@ -44,7 +44,7 @@ class FreelancerProfile extends React.Component {
       compo = <PublicProfile freelance={this.props.freelancer} />;
     }
     if (this.state.profileType === 2){
-      // compo = <EditProfile freelance={this.props.freelancer} handelPublic={this.handelPublicProfile} profileCallback = {this.callbackFunction} />;
+      compo = <EditProfile freelance={this.props.freelancer} handelPublic={this.handelPublicProfile} profileCallback = {this.callbackFunction} />;
     }
     if (this.state.profileType === 1) {
       edit = <Edit handelEdit={this.handelEditProfil} />;

@@ -14,7 +14,11 @@ class Edit extends React.Component {
     }
 
     render() {
-        return <Button onClick={this.handelEdit} >Edit</Button>
+        return (
+          <Button id ="editProfile" color="success" onClick={this.handelEdit}>
+            Edit profile
+          </Button>
+        );
     }
 
 }
