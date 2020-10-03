@@ -67,12 +67,10 @@ console.log('kjj',this.state.loginOut)
      compo = <FreelancerSection freelancer={this.state.user} logoutFunc={this.logoutFunc}  />
    }
 
-  return (
-    <div>
-  {compo}
-   </div>
 
-  );
+  return <div>{compo}</div>;
+
+
 };}
 
 export default App;
