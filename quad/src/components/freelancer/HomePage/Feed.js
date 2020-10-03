@@ -20,7 +20,7 @@ export default class Feed extends Component {
       jobOfferId : this.props.feed.ID
     }
     console.log(Ids)
-    axios.post('http://127.0.0.1:3008/apply', Ids)
+    axios.post('http://127.0.0.1:3008/home/apply', Ids)
     .then(response => console.log('[Application saved]',response.data))
     .catch(error  => console.log(error));
 
