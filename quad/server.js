@@ -280,14 +280,14 @@ app.post("/login", async (req, res) => {
 });
 
 // -*- sending company informatuions to the company profile -*- \\
-// app.get("/profile", async (req, res) => {
-//   try {
-//     const companyInfos = await db.companyInfo();
-//     res.status(200).send(companyInfos);
-//   } catch (err) {
-//     console.log(" we can't give you data ", err);
-//   }
-// });
+app.get("/profile", async (req, res) => {
+  try {
+    const companyInfos = await db.companyInfo();
+    res.status(200).send(companyInfos);
+  } catch (err) {
+    console.log(" we can't give you data ", err);
+  }
+});
 ////////////////////////////////////////////////////////
 app.get('/application', async (req, res) => {
   try {

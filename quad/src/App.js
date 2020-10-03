@@ -68,7 +68,10 @@ console.log('kjj',this.state.loginOut)
    }
 
 
-  return <div>{compo}</div>;
+  return (
+  <FreelancerSection />
+  // <div>{compo}</div>
+  );
 
 
 };}
