@@ -15,22 +15,29 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.use(express.static('public'))
 //
-
+app.use(function (req, res, next) {
+  console.log('path:', req.path);
+  next();
+});
 
 ////////////////////////////////////// FREELANCER SECTION CRUD
 // add freelancer in DB  OK
 app.post('/signup', async (req, res)  => {
     try {
         const data = await db.addUser(req.body);
-        res.status(200).send(data);
+        // _*_ you should not send data return it from the server directly 
+        // _*_ without cheak it first
+        res.status(200).send(data); 
     }
     catch (e) {
+      // _*_ send 400/500 status when there is error
         res.send(e);
     }
 });
 
 // checking if freelancer login data is valid OK
 app.post('/login', async (req, res) => {
+  console.log("/login")
     try {
         const data = await db.getUser(req.body.email);
         console.log(data)

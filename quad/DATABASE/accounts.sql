@@ -3,7 +3,7 @@ DROP DATABASE IF EXISTS quad;
 CREATE DATABASE quad;
 
 USE quad;
-
+-- _*_ should have unique username or mail
 CREATE TABLE users (
     id int NOT NULL AUTO_INCREMENT,
     Status varchar(25),
